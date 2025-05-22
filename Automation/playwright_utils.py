@@ -1,0 +1,2 @@
+class PlaywrightUtils:
+    pass
