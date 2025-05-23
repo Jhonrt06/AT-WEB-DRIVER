@@ -1,0 +1,11 @@
+# Distribution / packaging
+*.egg-info/
+dist/
+venv/
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+ENV/
