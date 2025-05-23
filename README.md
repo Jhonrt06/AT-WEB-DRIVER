@@ -17,31 +17,6 @@ It supports automated flows such as logging in, searching for products, and more
 
 ---
 
-## 📁 Project Structure
-
-    AT-WEB-DRIVER/
-    ├── automation/
-    │ ├── base_bot.py # Launches and manages Playwright browser
-    │ ├── playwright_utils.py # Reusable helper methods
-    │ ├── playwright_constants.py # Centralized CSS selectors
-    │ └── test_cases/
-    │ └── comprar_bot.py # Main test bot class
-    ├── config/
-    │ ├── logger_config.py # Logging configuration
-    │ └── settings.py # Loads environment variables
-    ├── .vscode/
-    │ └── settings.json # VS Code editor settings (80-char limit)
-    ├── .env # URL and headless mode settings
-    ├── main.py # Entry point for launching flows
-    ├── requirements.in # Direct dependencies
-    ├── requirements.txt # Frozen dependency versions
-    ├── dev-requirements.in # Development-only dependencies
-    ├── dev-requirements.txt # Frozen dev dependencies
-    └── README.md
-
-    
----
-
 ## ⚙️ Installation
 
 ### 1. Clone the repository
