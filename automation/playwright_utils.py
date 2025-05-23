@@ -101,3 +101,17 @@ class PlaywrightUtils:
         
         logger.warning(f"Expected URL fragment '{expected_partial_url}' not found. Current URL: {self.page.url}")
         return False
+
+    def open_page(self, url):
+        """
+        Navigates to the given URL using the Playwright page instance.
+
+        Parameters:
+        - url (str): The target URL to navigate to.
+        """
+        try:
+            self.page.goto(url)
+            logger.info(f"Navigated to URL: {url}")
+        except Exception as e:
+            logger.error(f"Failed to navigate to {url}: {e}")
+            raise

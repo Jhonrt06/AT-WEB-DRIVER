@@ -1,0 +1,13 @@
+[project]
+name = "amazon-automation"
+version = "0.1.0"
+description = "Automation bot for Amazon using Playwright"
+authors = ["Jhon Rodriguez"]
+requires-python = ">=3.10"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"

@@ -3,7 +3,7 @@ from automation.playwright_utils import PlaywrightUtils
 from config.settings import Settings
 from automation.playwright_constants import SELECTORS_AMAZON
 from config.logs.logger_config import logger
-
+from playwright.sync_api import *
 class ComprarBot:
     """
     Test case: automation of the purchase flow.
@@ -14,26 +14,24 @@ class ComprarBot:
         self.email = email
         self.password = password
         self.settings = Settings()
-        # self.headless = self.settings.headless
 
-    def open_amazon(self):
-        logger.info("Opening Amazon...")
+    def run_purchase_flow(self, product_name = None):
         with BaseBot(headless=False) as bot:
             page = bot.page
-            page.goto(self.settings.amazon_url)
-            print("✅ Amazon opened successfully.")
-            input("Press ENTER to close the browser...")
-
-    def login_amazon(self):
-        logger.info("Starting login on Amazon...")
-        with BaseBot(headless=self.settings.headless) as bot:
-            page = bot.page
-            page.goto("https://www.amazon.com.mx/ap/signin")
-
             utils = PlaywrightUtils(page)
-            utils.login(
-                self.email, self.password, SELECTORS_AMAZON["login_button_home"]
-            )
 
-            print("✅ Login completed.")
-            input("Press ENTER to close the browser...")
+            utils.open_page(self.settings.amazon_url)
+            page.wait_for_timeout(1000) 
+            if utils.verify_element("form[action='/errors/validateCaptcha']", timeout=2000):
+                logger.warning("⚠️ CAPTCHA detected. Manual intervention required.")
+                input("Solve CAPTCHA and press ENTER to continue...")
+
+            self.login_amazon(utils)
+            # self.search_product(utils, product_name)
+
+    def login_amazon(self, utils):
+        logger.info("Logging in...")
+        utils.wait_and_click(SELECTORS_AMAZON["login_button_home"])
+        utils.login(self.email, self.password, SELECTORS_AMAZON)
+        logger.info("Login completed.")
+
