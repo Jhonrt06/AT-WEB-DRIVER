@@ -79,7 +79,9 @@ class PlaywrightUtils:
         - False if not (Timeout)
         """
         try:
-            self.page.wait_for_selector(selector, timeout=timeout, state="visible")
+            self.page.wait_for_selector(
+                selector, timeout=timeout, state="visible"
+            )
             logger.info(f"Element is visible: {selector}")
             return True
         except TimeoutError:

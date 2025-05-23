@@ -27,7 +27,9 @@ class BuyBot:
             if utils.verify_element(
                 "form[action='/errors/validateCaptcha']", timeout=2000
             ):
-                logger.warning("⚠️ CAPTCHA detected. Manual intervention required.")
+                logger.warning(
+                    "⚠️ CAPTCHA detected. Manual intervention required."
+                )
                 input("Solve CAPTCHA and press ENTER to continue...")
 
             self.login_amazon(utils)
