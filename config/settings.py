@@ -1,26 +1,24 @@
 from dotenv import load_dotenv
 import os
 
-# Carga las variables de entorno del archivo .env
+# Load environment variables from the .env file
 load_dotenv()
-
 
 class Settings:
     """
-    Clase que carga y gestiona las variables de entorno del proyecto.
+    Class that loads and manages the project's environment variables.
 
-    Esta clase se encarga de leer las variables definidas en el archivo `.env`
-    usando la librería `python-dotenv`, y proporciona acceso a ellas de forma segura
-    dentro del código.
+    This class is responsible for reading the variables defined in the `.env` file
+    using the `python-dotenv` library and provides safe access to them throughout the code.
 
-    Atributos:
-    ----------
+    Attributes:
+    -----------
     amazon_url : str
-        URL base del sitio de Amazon que se utilizará en la automatización.
+        Base URL of the Amazon site to be used in the automation.
 
     headless : bool
-        Define si el navegador debe ejecutarse en modo invisible (headless)
-        o visible (headed). Se espera un valor 'true' o 'false' en formato string.
+        Defines whether the browser should run in headless (invisible) mode
+        or headed (visible) mode. Expected values are 'true' or 'false' as strings.
     """
 
     def __init__(self):

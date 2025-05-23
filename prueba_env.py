@@ -1,8 +1,8 @@
 from config.settings import Settings
 
-# Crear una instancia de la clase Settings
+# Create an instance of the Settings class
 settings = Settings()
 
-# Imprimir los valores obtenidos desde .env
-print("URL de Amazon:", settings.amazon_url)
-print("¿Modo headless?:", settings.headless)
+# Print the values retrieved from the .env file
+print("Amazon URL:", settings.amazon_url)
+print("Headless mode?:", settings.headless)

@@ -1,11 +1,11 @@
 """
-Constantes de selectores para elementos de Amazon.
+CSS selector constants for Amazon page elements.
 """
 
 SELECTORS_AMAZON = {
-    "login_button_home": "#nav-link-accountList",  # Botón "Hola, identifícate"
+    "login_button_home": "#nav-link-accountList",  # "Hello, Sign in" button
     "email": "#ap_email",
-    "continuar": "#continue",
+    "continue": "#continue",
     "password": "#ap_password",
     "submit": "#signInSubmit",
 }

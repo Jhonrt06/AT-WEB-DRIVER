@@ -1,16 +1,16 @@
 import logging
 import os
 
-# Asegúrate de que exista la carpeta de logs
+# Ensure the logs directory exists
 os.makedirs("logs", exist_ok=True)
 
-# Configuración básica del logger
+# Basic logger configuration
 logging.basicConfig(
     filename="logs/automation.log",
-    filemode="a",
+    filemode="a",  # Append mode
     format="%(asctime)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
 
-# Crear objeto logger que puedes importar en cualquier archivo
+# Create a logger object that can be imported in any module
 logger = logging.getLogger("amazon_automation")
