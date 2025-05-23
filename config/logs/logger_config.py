@@ -9,7 +9,7 @@ logging.basicConfig(
     filename="logs/automation.log",
     filemode="a",  # Append mode
     format="%(asctime)s - %(levelname)s - %(message)s",
-    level=logging.INFO
+    level=logging.INFO,
 )
 
 # Create a logger object that can be imported in any module

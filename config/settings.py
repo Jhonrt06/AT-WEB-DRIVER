@@ -4,6 +4,7 @@ import os
 # Load environment variables from the .env file
 load_dotenv()
 
+
 class Settings:
     """
     Class that loads and manages the project's environment variables.

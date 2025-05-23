@@ -1,6 +1,7 @@
 from playwright.sync_api import TimeoutError
 from config.logs.logger_config import logger
 
+
 class PlaywrightUtils:
     """
     PlaywrightUtils class
@@ -98,8 +99,10 @@ class PlaywrightUtils:
                 logger.info(f"Expected URL reached: {self.page.url}")
                 return True
             self.page.wait_for_timeout(500)
-        
-        logger.warning(f"Expected URL fragment '{expected_partial_url}' not found. Current URL: {self.page.url}")
+
+        logger.warning(
+            f"Expected URL fragment '{expected_partial_url}' not found. Current URL: {self.page.url}"
+        )
         return False
 
     def open_page(self, url):

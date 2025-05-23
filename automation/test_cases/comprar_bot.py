@@ -4,7 +4,9 @@ from config.settings import Settings
 from automation.playwright_constants import SELECTORS_AMAZON
 from config.logs.logger_config import logger
 from playwright.sync_api import *
-class ComprarBot:
+
+
+class BuyBot:
     """
     Test case: automation of the purchase flow.
     Contains methods to open Amazon and perform login.
@@ -15,14 +17,16 @@ class ComprarBot:
         self.password = password
         self.settings = Settings()
 
-    def run_purchase_flow(self, product_name = None):
+    def run_purchase_flow(self, product_name=None):
         with BaseBot(headless=False) as bot:
             page = bot.page
             utils = PlaywrightUtils(page)
 
             utils.open_page(self.settings.amazon_url)
-            page.wait_for_timeout(1000) 
-            if utils.verify_element("form[action='/errors/validateCaptcha']", timeout=2000):
+            page.wait_for_timeout(1000)
+            if utils.verify_element(
+                "form[action='/errors/validateCaptcha']", timeout=2000
+            ):
                 logger.warning("⚠️ CAPTCHA detected. Manual intervention required.")
                 input("Solve CAPTCHA and press ENTER to continue...")
 
@@ -34,4 +38,3 @@ class ComprarBot:
         utils.wait_and_click(SELECTORS_AMAZON["login_button_home"])
         utils.login(self.email, self.password, SELECTORS_AMAZON)
         logger.info("Login completed.")
-
