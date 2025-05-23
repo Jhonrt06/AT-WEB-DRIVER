@@ -51,7 +51,6 @@ cd AT-WEB-DRIVER
 
 ### 2. Set up a virtual environment
 
-```bash
 python -m venv venv
 .\venv\Scripts\activate           # On Windows
 
