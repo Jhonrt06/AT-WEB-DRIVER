@@ -7,5 +7,5 @@ SELECTORS_AMAZON = {
     "email": "#ap_email",
     "continuar": "#continue",
     "password": "#ap_password",
-    "submit": "#signInSubmit"
+    "submit": "#signInSubmit",
 }

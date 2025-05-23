@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+
 class BaseBot:
     """
     Clase base que gestiona el ciclo de vida del navegador con Playwright.

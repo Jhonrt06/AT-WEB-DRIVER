@@ -8,6 +8,7 @@ Uso típico:
     utils.esperar_y_clickear("#boton")
 """
 
+
 class PlaywrightUtils:
     def __init__(self, page):
         """
@@ -69,3 +70,19 @@ class PlaywrightUtils:
         # self.esperar_y_clickear(selectors["continuar"], timeout)
         # self.rellenar_input(selectors["password"], password, timeout)
         # self.esperar_y_clickear(selectors["submit"], timeout)
+
+    def elemento_visible(self, selector, timeout=5000):
+        """
+        Verifica si un elemento es visible en la página dentro del tiempo dado.
+
+        Retorna:
+        - True si aparece el selector
+        - False si no (Timeout)
+        """
+        try:
+            self.page.wait_for_selector(selector, timeout=timeout, state="visible")
+            logger.info(f"Elemento visible: {selector}")
+            return True
+        except TimeoutError:
+            logger.warning(f"Elemento NO visible: {selector}")
+            return False
