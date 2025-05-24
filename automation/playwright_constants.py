@@ -8,4 +8,5 @@ SELECTORS_AMAZON = {
     "continue": "#continue",
     "password": "#ap_password",
     "submit": "#signInSubmit",
+    "hamburger_menu": "#nav-hamburger-menu"
 }

@@ -18,25 +18,29 @@ class BuyBot:
         self.settings = Settings()
 
     def run_purchase_flow(self, product_name=None):
+        logger.info("Starting the purchase flow...")
+
         with BaseBot(headless=False) as bot:
             page = bot.page
             utils = PlaywrightUtils(page)
+            page.wait_for_timeout(1000)  # 1 second pause
 
+            logger.info("Opening Amazon...")
             utils.open_page(self.settings.amazon_url)
             page.wait_for_timeout(1000)
-            if utils.verify_element(
-                "form[action='/errors/validateCaptcha']", timeout=2000
-            ):
-                logger.warning(
-                    "⚠️ CAPTCHA detected. Manual intervention required."
-                )
-                input("Solve CAPTCHA and press ENTER to continue...")
 
-            self.login_amazon(utils)
-            # self.search_product(utils, product_name)
+            logger.info("Clicking on the login button...")
+            utils.wait_and_click(SELECTORS_AMAZON["login_button_home"])
+            page.wait_for_timeout(1000)
 
-    def login_amazon(self, utils):
-        logger.info("Logging in...")
-        utils.wait_and_click(SELECTORS_AMAZON["login_button_home"])
-        utils.login(self.email, self.password, SELECTORS_AMAZON)
-        logger.info("Login completed.")
+            logger.info("Login")
+            utils.login(
+                    email=self.email,
+                    password=self.password,
+                    selectors=SELECTORS_AMAZON,
+            )
+            
+        input("✅ Press ENTER after verifying login manually (CAPTCHA, etc.)...")
+
+
+

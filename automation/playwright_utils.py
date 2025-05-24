@@ -1,7 +1,7 @@
 from playwright.sync_api import TimeoutError
 from config.logs.logger_config import logger
-
-
+from automation.playwright_constants import SELECTORS_AMAZON
+import unicodedata
 class PlaywrightUtils:
     """
     PlaywrightUtils class
@@ -22,71 +22,62 @@ class PlaywrightUtils:
         """
         self.page = page
 
-    def wait_and_click(self, selector, timeout=10000):
+    def wait_for_clickable_and_click(self, selector: str, timeout=10000):
         """
-        Waits for the element to be available and clicks it.
+        Waits for an element to be clickable and clicks it. Logs the outcome.
 
-        Parameters:
-        - selector: CSS selector of the button or link
-        - timeout: maximum wait time in milliseconds
+        Args:
+            selector (str): CSS selector of the element.
+            timeout (int): Max wait time (in ms).
         """
-        self.page.wait_for_selector(selector, timeout=timeout)
-        self.page.click(selector)
+        body_text = self.get_visible_text(selector, timeout)
 
-    def fill_input(self, selector, text, timeout=10000):
+        try:
+            self.page.wait_for_selector(selector, timeout=timeout, state="visible")
+            locator = self.page.locator(selector)
+
+            if locator.is_enabled():
+                locator.click()
+                logger.info(f'✅ "{body_text}" has been pressed.')
+            else:
+                logger.warning(f'⚠️ "{body_text}" is visible but not enabled (not clickable).')
+        except Exception as e:
+            logger.error(f'❌ Failed to click "{body_text or selector}": {e}')
+
+    def login(self, email: str, password: str, selectors: dict, timeout=10000):
         """
-        Waits for a text field to be available and fills it with the given text.
+        Logs into Amazon using provided credentials.
 
-        Parameters:
-        - selector: CSS selector of the input field
-        - text: text to fill in the field
-        - timeout: maximum wait time
-        """
-        self.page.wait_for_selector(selector, timeout=timeout)
-        self.page.fill(selector, text)
-
-    def wait_for_text(self, expected_text, timeout=10000):
-        """
-        Waits briefly and checks if a specific text appears on the page.
-
-        Parameters:
-        - expected_text: the text we expect to find
-        - timeout: total wait time
-
-        Returns:
-        - True if the text is on the page, False otherwise
-        """
-        self.page.wait_for_timeout(1000)
-        return expected_text in self.page.content()
-
-    def login(self, email, password, selectors, timeout=10000):
-        """
-        Performs a generic login using the given selectors.
-
-        Parameters:
-        - email: user's email address
-        - password: user's password
-        - selectors: dictionary of CSS selectors
-        """
-        print("You are in the login function")
-
-    def verify_element(self, selector, timeout=5000):
-        """
-        Checks if an element is visible on the page within the given time.
-
-        Returns:
-        - True if the selector is found
-        - False if not (Timeout)
+        Args:
+            email (str): User's email address.
+            password (str): User's password.
+            selectors (dict): Dictionary with the required CSS selectors.
+            timeout (int): Max wait time per step (in ms).
         """
         try:
-            self.page.wait_for_selector(
-                selector, timeout=timeout, state="visible"
-            )
-            logger.info(f"Element is visible: {selector}")
-            return True
-        except TimeoutError:
-            logger.warning(f"Element NOT visible: {selector}")
-            return False
+            # Fill email
+            self.page.wait_for_selector(selectors["email"], timeout=timeout)
+            self.page.wait_for_timeout(500)
+            self.page.fill(selectors["email"], email)
+            logger.info("📧 Email entered.")
+
+            # Click 'Continue' button
+            self.wait_and_click(selectors["continue"], timeout)
+
+            # Fill password
+            self.page.wait_for_selector(selectors["password"], timeout=timeout)
+            self.page.wait_for_timeout(500)
+            self.page.fill(selectors["password"], password)
+            logger.info("🔒 Password entered.")
+
+            # Submit login form
+            self.wait_and_click(selectors["submit"], timeout)
+
+            logger.info("✅ Login process completed.")
+
+        except Exception as e:
+            logger.exception(f"❌ Login failed due to an error: {e}")
+
 
     def verify_url_contains(self, expected_partial_url, timeout=5000):
         """
@@ -120,3 +111,41 @@ class PlaywrightUtils:
         except Exception as e:
             logger.error(f"Failed to navigate to {url}: {e}")
             raise
+
+    def get_visible_text(self, selector: str, timeout=5000) -> str:
+        """
+        Returns the visible text content of an element, including nested children.
+
+        Args:
+            selector (str): The CSS selector of the element.
+            timeout (int): Max time to wait for the element (ms).
+
+        Returns:
+            str: The visible text (stripped), or empty string if not found.
+        """
+        try:
+            self.page.wait_for_selector(selector, timeout=timeout)
+            element = self.page.locator(selector)
+            raw_text = element.inner_text().strip()
+
+            # Elimina saltos de línea y múltiples espacios
+            cleaned_text = " ".join(raw_text.split())
+
+            # Normaliza caracteres unicode (acentos, etc.)
+            normalized_text = unicodedata.normalize("NFC", cleaned_text)
+
+            logger.info(f"Text found in {selector!r}: {normalized_text!r}")
+            return normalized_text
+
+        except Exception as e:
+            logger.warning(f"Could not retrieve text from {selector}: {e}")
+            return ""
+        
+    def element_exists(self, selector: str, timeout=3000) -> bool:
+        """
+        Checks if an element exists and is visible within a given time.
+        """
+        try:
+            return self.page.is_visible(selector)
+        except Exception:
+            return False
