@@ -30,6 +30,7 @@ class PlaywrightUtils:
             selector (str): CSS selector of the element.
             timeout (int): Max wait time (in ms).
         """
+        logger.info(f"Waiting for element {selector!r} to be clickable...")
         body_text = self.get_visible_text(selector, timeout)
 
         try:
@@ -62,7 +63,7 @@ class PlaywrightUtils:
             logger.info("📧 Email entered.")
 
             # Click 'Continue' button
-            self.wait_and_click(selectors["continue"], timeout)
+            self.wait_for_clickable_and_click(selectors["continue"], timeout)
 
             # Fill password
             self.page.wait_for_selector(selectors["password"], timeout=timeout)
@@ -71,7 +72,7 @@ class PlaywrightUtils:
             logger.info("🔒 Password entered.")
 
             # Submit login form
-            self.wait_and_click(selectors["submit"], timeout)
+            self.wait_for_clickable_and_click(selectors["submit"], timeout)
 
             logger.info("✅ Login process completed.")
 
@@ -149,3 +150,24 @@ class PlaywrightUtils:
             return self.page.is_visible(selector)
         except Exception:
             return False
+
+    def validate_login(self, selector) -> bool:
+        """
+        Validates whether the login was successful by checking the post-login account label.
+
+        Args:
+            utils (PlaywrightUtils): Utility class for Playwright actions.
+
+        Returns:
+            bool: True if login is successful, False otherwise.
+        """
+        
+        label = self.get_visible_text(selector=selector)
+
+        # Clean Code: simple rule – if label says "Hola" but not "identifícate", user is logged in
+        if "Hola" in label and "identifícate" not in label.lower():
+            logger.info(f"✅ Login confirmed. Label now shows: {label}")
+            return True
+
+        logger.error(f"❌ Login failed. Still showing: {label}")
+        return False

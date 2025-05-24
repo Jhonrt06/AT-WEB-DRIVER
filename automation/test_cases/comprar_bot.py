@@ -30,7 +30,7 @@ class BuyBot:
             page.wait_for_timeout(1000)
 
             logger.info("Clicking on the login button...")
-            utils.wait_and_click(SELECTORS_AMAZON["login_button_home"])
+            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["login_button_home"])
             page.wait_for_timeout(1000)
 
             logger.info("Login")
@@ -39,8 +39,20 @@ class BuyBot:
                     password=self.password,
                     selectors=SELECTORS_AMAZON,
             )
-            
-        input("✅ Press ENTER after verifying login manually (CAPTCHA, etc.)...")
+            page.wait_for_timeout(1000)
+
+            logger.info("Verifying login...")
+            # Wait for the page to load and check if the login was successful
+            utils.validate_login(
+                    selector=SELECTORS_AMAZON["login_button_home"],
+            )
+            page.wait_for_timeout(1000)
+
+            logger.info("Verify and Click on the hamburger menu...")
+            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["hamburger_menu"])
+            page.wait_for_timeout(1000)
+            # Wait for the user to verify the login manually
+        input("✅ Press ENTER after verifying login manually...")
 
 
 
