@@ -87,26 +87,6 @@ class PlaywrightUtils:
         except Exception as e:
             logger.exception(f"❌ Login failed due to an error: {e}")
 
-
-    def verify_url_contains(self, expected_partial_url, timeout=5000):
-        """
-        Waits up to `timeout` ms for the current URL to contain a specific string.
-
-        Returns:
-        - True if the expected URL fragment is found
-        - False otherwise
-        """
-        for _ in range(timeout // 500):
-            if expected_partial_url in self.page.url:
-                logger.info(f"Expected URL reached: {self.page.url}")
-                return True
-            self.page.wait_for_timeout(500)
-
-        logger.warning(
-            f"Expected URL fragment '{expected_partial_url}' not found. Current URL: {self.page.url}"
-        )
-        return False
-
     def open_page(self, url):
         """
         Navigates to the given URL using the Playwright page instance.
@@ -282,58 +262,6 @@ class PlaywrightUtils:
             logger.error(f"❌ Failed to click the first product: {e}")
             return False
         
-    def close_any_popup(self, timeout=5000, popup_selector="div.a-popover-wrapper") -> bool:
-        """
-        Tries to close any popup that appears after an action, using either:
-        - Known button labels ("No, gracias", "Cerrar", etc.)
-        - A fallback click outside the popup if it's dismissible.
-
-        Args:
-            timeout (int): Time to wait for popup detection.
-            popup_selector (str): Selector of the popup element (used for bounding box).
-
-        Returns:
-            bool: True if a popup was found and handled, False otherwise.
-        """
-        try:
-            # 1. Buscar botones comunes
-            candidates = [
-                'text="No, gracias"',
-                '[aria-label="Cerrar"]',
-                '[data-action="a-popover-close"]',
-                '.a-button-close',
-                '.a-close-button',
-                'button[aria-label="close"]',
-                'button:has-text("No thanks")',
-                'button:has-text("Skip")',
-            ]
-
-            for selector in candidates:
-                btn = self.page.locator(selector)
-                if btn.is_visible(timeout=timeout):
-                    btn.click()
-                    logger.info(f'🛑 Popup closed with selector: {selector}')
-                    return True
-
-            # 2. Si no hubo botón visible, intentar clic fuera del área
-            popup = self.page.locator(popup_selector)
-            if popup.is_visible(timeout=timeout):
-                box = popup.bounding_box()
-                if box:
-                    x = box["x"] - 50
-                    y = box["y"] - 50
-                    self.page.mouse.click(x, y)
-                    logger.info(f"🖱️ Clicked outside popup at ({x}, {y}) to close it.")
-                    return True
-
-            logger.info("✅ No popup appeared.")
-            return False
-
-        except Exception as e:
-            logger.warning(f"⚠️ Failed to close popup: {e}")
-            return False
-
-
     def confirm_add_to_cart(self, timeout=5000) -> bool:
         """
         Verifies if the product was successfully added to the cart.
@@ -363,49 +291,6 @@ class PlaywrightUtils:
 
         except Exception as e:
             logger.error(f"❌ Error verifying cart addition: {e}")
-            return False
-
-    def click_outside_popup(self, popup_selector="div.a-popover-wrapper", delay=1000) -> bool:
-        """
-        Clicks outside a detected popup to close it if it's dismissible.
-
-        Args:
-            popup_selector (str): The CSS selector of the popup container.
-            delay (int): Time to wait before and after attempting the click.
-
-        Returns:
-            bool: True if the click was performed, False otherwise.
-        """
-        try:
-            self.page.wait_for_timeout(delay)
-
-            # Scroll al tope por si el popup tiene posición fija
-            self.page.evaluate("window.scrollTo(0, 0)")
-            self.page.wait_for_timeout(300)
-
-            popup = self.page.locator(popup_selector)
-            if not popup.is_visible():
-                logger.info("✅ No popup visible to dismiss.")
-                return False
-
-            box = popup.bounding_box()
-            if not box:
-                logger.warning("⚠️ Popup found but bounding box is missing.")
-                return False
-
-            # Calcular una posición segura FUERA del área del popup
-            x = max(box["x"] - 60, 0)
-            y = max(box["y"] - 60, 0)
-
-            # Clic fuera
-            self.page.mouse.click(x, y)
-            self.page.wait_for_timeout(1000)
-
-            logger.info(f"🖱️ Clicked outside popup at coordinates ({x}, {y})")
-            return True
-
-        except Exception as e:
-            logger.error(f"❌ Failed to click outside popup: {e}")
             return False
 
     def close_warranty_popup(self, timeout=3000):
