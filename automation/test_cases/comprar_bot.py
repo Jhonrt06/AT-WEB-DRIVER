@@ -25,6 +25,10 @@ class BuyBot:
             utils = PlaywrightUtils(page)
             page.wait_for_timeout(1000)  # 1 second pause
 
+            page.mouse.move(100, 200)
+            page.wait_for_timeout(500)
+            page.mouse.wheel(0, 300)
+
             logger.info("Opening Amazon...")
             utils.open_page(self.settings.amazon_url)
             page.wait_for_timeout(1000)
@@ -51,7 +55,13 @@ class BuyBot:
             logger.info("Verify and Click on the hamburger menu...")
             utils.wait_for_clickable_and_click(SELECTORS_AMAZON["hamburger_menu"])
             page.wait_for_timeout(1000)
-            # Wait for the user to verify the login manually
+            
+            logger.info("Clicking on the Electronics option...")
+            
+            utils.click_hamburger_option(
+                    option_text="Electr\u00f3nicos",
+            )
+            page.wait_for_timeout(1000)
         input("✅ Press ENTER after verifying login manually...")
 
 

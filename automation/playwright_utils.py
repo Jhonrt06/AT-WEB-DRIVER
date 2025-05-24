@@ -33,6 +33,7 @@ class PlaywrightUtils:
         logger.info(f"Waiting for element {selector!r} to be clickable...")
         body_text = self.get_visible_text(selector, timeout)
 
+
         try:
             self.page.wait_for_selector(selector, timeout=timeout, state="visible")
             locator = self.page.locator(selector)
@@ -142,16 +143,8 @@ class PlaywrightUtils:
             logger.warning(f"Could not retrieve text from {selector}: {e}")
             return ""
         
-    def element_exists(self, selector: str, timeout=3000) -> bool:
-        """
-        Checks if an element exists and is visible within a given time.
-        """
-        try:
-            return self.page.is_visible(selector)
-        except Exception:
-            return False
 
-    def validate_login(self, selector) -> bool:
+    def validate_login(self, selector: str) -> bool:
         """
         Validates whether the login was successful by checking the post-login account label.
 
@@ -171,3 +164,17 @@ class PlaywrightUtils:
 
         logger.error(f"❌ Login failed. Still showing: {label}")
         return False
+
+    def click_hamburger_option(self, option_text: str, timeout=5000):
+        """
+        Clicks an item from the Amazon hamburger menu using a dynamic selector.
+
+        Args:
+            option_text (str): The visible text of the menu item (e.g., "Electrónicos").
+            timeout (int): Maximum wait time in milliseconds.
+        """ 
+        logger.info(f"Clicking on the hamburger menu option: {option_text}")
+        selector = f'a.hmenu-item >> text="{option_text}"'
+        logger.info(f"Selector: {selector}")
+        self.wait_for_clickable_and_click(selector, timeout)
+
