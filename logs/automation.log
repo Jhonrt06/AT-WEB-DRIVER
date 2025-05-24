@@ -1,104 +1,881 @@
-2025-05-24 03:44:29,396 - INFO - Starting the purchase flow...
-2025-05-24 03:44:31,486 - INFO - Opening Amazon...
-2025-05-24 03:44:32,356 - INFO - Navigated to URL: https://www.amazon.com.mx/
-2025-05-24 03:44:33,358 - INFO - Clicking on the login button...
-2025-05-24 03:44:33,358 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
-2025-05-24 03:44:33,383 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
-2025-05-24 03:44:33,586 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
-2025-05-24 03:44:34,595 - INFO - Login
-2025-05-24 03:44:35,125 - INFO - \U0001f4e7 Email entered.
-2025-05-24 03:44:35,125 - INFO - Waiting for element '#continue' to be clickable...
-2025-05-24 03:44:35,132 - INFO - Text found in '#continue': 'Continuar'
-2025-05-24 03:44:35,155 - INFO - \u2705 "Continuar" has been pressed.
-2025-05-24 03:44:36,730 - INFO - \U0001f512 Password entered.
-2025-05-24 03:44:36,730 - INFO - Waiting for element '#signInSubmit' to be clickable...
-2025-05-24 03:44:36,738 - INFO - Text found in '#signInSubmit': ''
-2025-05-24 03:44:36,780 - INFO - \u2705 "" has been pressed.
-2025-05-24 03:44:36,781 - INFO - \u2705 Login process completed.
-2025-05-24 03:44:37,796 - INFO - Verifying login...
-2025-05-24 03:44:37,808 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
-2025-05-24 03:44:37,808 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
-2025-05-24 03:44:38,817 - INFO - Verify and Click on the hamburger menu...
-2025-05-24 03:44:38,817 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
-2025-05-24 03:44:38,825 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
-2025-05-24 03:44:38,866 - INFO - \u2705 "Todo" has been pressed.
-2025-05-24 03:44:39,883 - INFO - Clicking on the Electronics option...
-2025-05-24 03:44:39,883 - INFO - Clicking on the hamburger menu option: Electrónicos
-2025-05-24 03:44:39,883 - INFO - Selector: a.hmenu-item:has-text("Electrónicos")
-2025-05-24 03:44:39,883 - INFO - Waiting for element 'a.hmenu-item:has-text("Electrónicos")' to be clickable...
-2025-05-24 03:44:41,082 - WARNING - Could not retrieve text from a.hmenu-item:has-text("Electrónicos"): Locator.inner_text: Error: strict mode violation: locator("a.hmenu-item:has-text(\"Electrónicos\")") resolved to 10 elements:
-    1) <a href="" role="button" data-menu-id="10" class="hmenu-item" data-ref-tag="nav_em_1_1_1_15">…</a> aka get_by_role("button", name="Electrónicos")
-    2) <a class="hmenu-item" href="/gp/browse.html?node=9687280011&ref_=nav_em_elec_accesories_0_2_10_9">Accesorios Electrónicos\u21b5</a> aka get_by_text("Accesorios Electrónicos").first
-    3) <a class="hmenu-item" href="/gp/browse.html?node=9482558011&ref_=nav_em__allelectronics_0_2_10_10">Todo en Electrónicos\u21b5</a> aka get_by_text("Todo en Electrónicos").first
-    4) <a class="hmenu-item" href="/gp/browse.html?node=11337425011&ref_=nav_em__toys_elec_0_2_17_10">Juguetes Electrónicos</a> aka get_by_text("Juguetes Electrónicos").first
-    5) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(2)
-    6) <a class="hmenu-item" href="/gp/browse.html?node=9687280011&ref_=nav_em_elec_accesories_0_2_10_9">Accesorios Electrónicos\u21b5</a> aka get_by_text("Accesorios Electrónicos").nth(1)
-    7) <a class="hmenu-item" href="/gp/browse.html?node=9482558011&ref_=nav_em__allelectronics_0_2_10_10">Todo en Electrónicos\u21b5</a> aka get_by_text("Todo en Electrónicos").nth(1)
-    8) <a class="hmenu-item" href="/gp/browse.html?node=11337425011&ref_=nav_em__toys_elec_0_2_17_10">Juguetes Electrónicos</a> aka get_by_text("Juguetes Electrónicos").nth(1)
-    9) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(4)
-    10) <a href="" role="button" data-menu-id="10" class="hmenu-item" data-ref-tag="nav_em_1_1_1_15">…</a> aka locator(".hmenu-translateX-left > #hmenu-content > .hmenu > section:nth-child(5) > ul > li:nth-child(4) > .hmenu-item")
+2025-05-24 13:56:00,728 - INFO - Starting the purchase flow...
+2025-05-24 13:56:02,883 - INFO - Opening Amazon...
+2025-05-24 13:56:03,187 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 13:56:04,196 - INFO - Clicking on the login button...
+2025-05-24 13:56:04,196 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 13:56:07,628 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 13:56:07,839 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 13:56:08,851 - INFO - Login
+2025-05-24 13:56:09,375 - INFO - \U0001f4e7 Email entered.
+2025-05-24 13:56:09,375 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 13:56:09,382 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 13:56:09,800 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 13:56:10,579 - INFO - \U0001f512 Password entered.
+2025-05-24 13:56:10,579 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 13:56:10,585 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 13:56:10,635 - INFO - \u2705 "" has been pressed.
+2025-05-24 13:56:10,635 - INFO - \u2705 Login process completed.
+2025-05-24 13:56:11,643 - INFO - Verifying login...
+2025-05-24 13:56:11,657 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 13:56:11,657 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 13:56:12,666 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 13:56:12,666 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 13:56:12,674 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 13:56:12,699 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 13:56:13,705 - INFO - Clicking on the Electronics option...
+2025-05-24 13:56:13,736 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 13:56:14,749 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 13:56:19,761 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 13:56:20,646 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 13:56:23,267 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 13:56:39,217 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:26:04,849 - INFO - Starting the purchase flow...
+2025-05-24 15:26:06,978 - INFO - Opening Amazon...
+2025-05-24 15:26:07,769 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 15:26:08,776 - INFO - Clicking on the login button...
+2025-05-24 15:26:08,776 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 15:26:08,800 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 15:26:09,098 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 15:26:10,111 - INFO - Login
+2025-05-24 15:26:10,644 - INFO - \U0001f4e7 Email entered.
+2025-05-24 15:26:10,644 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 15:26:10,652 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 15:26:10,681 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 15:26:12,282 - INFO - \U0001f512 Password entered.
+2025-05-24 15:26:12,282 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 15:26:12,288 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 15:26:12,328 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:26:12,329 - INFO - \u2705 Login process completed.
+2025-05-24 15:26:13,334 - INFO - Verifying login...
+2025-05-24 15:26:13,348 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 15:26:13,348 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 15:26:14,356 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 15:26:14,356 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 15:26:14,365 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 15:26:14,408 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 15:26:15,412 - INFO - Clicking on the Electronics option...
+2025-05-24 15:26:15,455 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 15:26:16,465 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 15:26:21,469 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 15:26:22,186 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 15:26:24,862 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 15:26:33,027 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:26:38,858 - INFO - Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 15:26:38,882 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 15:26:38,950 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:26:40,243 - WARNING - \u26a0\ufe0f Error trying to close popup: Locator.is_visible: Error: strict mode violation: locator("text=\"No, gracias\"") resolved to 5 elements:
+    1) <button type="button" class="a-button-text" id="a-autoid-2-announce"> No, gracias </button> aka locator("#a-autoid-2-announce")
+    2) <button type="button" class="a-button-text" id="a-autoid-4-announce"> No, gracias </button> aka locator("#a-autoid-4-announce")
+    3) <button type="button" class="a-button-text" id="a-autoid-6-announce"> No, gracias </button> aka locator("#a-autoid-6-announce")
+    4) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-announce")
+    5) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-ld-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-ld-announce")
 
 Call log:
-  - waiting for locator("a.hmenu-item:has-text(\"Electrónicos\")")
+    - checking visibility of locator("text=\"No, gracias\"")
 
-2025-05-24 03:44:42,220 - ERROR - \u274c Failed to click "a.hmenu-item:has-text("Electrónicos")": Locator.is_enabled: Error: strict mode violation: locator("a.hmenu-item:has-text(\"Electrónicos\")") resolved to 10 elements:
-    1) <a href="" role="button" data-menu-id="10" class="hmenu-item" data-ref-tag="nav_em_1_1_1_15">…</a> aka get_by_role("button", name="Electrónicos")
-    2) <a class="hmenu-item" href="/gp/browse.html?node=9687280011&ref_=nav_em_elec_accesories_0_2_10_9">Accesorios Electrónicos\u21b5</a> aka get_by_text("Accesorios Electrónicos").first
-    3) <a class="hmenu-item" href="/gp/browse.html?node=9482558011&ref_=nav_em__allelectronics_0_2_10_10">Todo en Electrónicos\u21b5</a> aka get_by_text("Todo en Electrónicos").first
-    4) <a class="hmenu-item" href="/gp/browse.html?node=11337425011&ref_=nav_em__toys_elec_0_2_17_10">Juguetes Electrónicos</a> aka get_by_text("Juguetes Electrónicos").first
-    5) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(2)
-    6) <a class="hmenu-item" href="/gp/browse.html?node=9687280011&ref_=nav_em_elec_accesories_0_2_10_9">Accesorios Electrónicos\u21b5</a> aka get_by_text("Accesorios Electrónicos").nth(1)
-    7) <a class="hmenu-item" href="/gp/browse.html?node=9482558011&ref_=nav_em__allelectronics_0_2_10_10">Todo en Electrónicos\u21b5</a> aka get_by_text("Todo en Electrónicos").nth(1)
-    8) <a class="hmenu-item" href="/gp/browse.html?node=11337425011&ref_=nav_em__toys_elec_0_2_17_10">Juguetes Electrónicos</a> aka get_by_text("Juguetes Electrónicos").nth(1)
-    9) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(4)
-    10) <a href="" role="button" data-menu-id="10" class="hmenu-item" data-ref-tag="nav_em_1_1_1_15">…</a> aka locator(".hmenu-translateX-left > #hmenu-content > .hmenu > section:nth-child(5) > ul > li:nth-child(4) > .hmenu-item")
+2025-05-24 15:26:41,528 - WARNING - \u26a0\ufe0f Error trying to close popup: Locator.is_visible: Error: strict mode violation: locator("text=\"No, gracias\"") resolved to 5 elements:
+    1) <button type="button" class="a-button-text" id="a-autoid-2-announce"> No, gracias </button> aka locator("#a-autoid-2-announce")
+    2) <button type="button" class="a-button-text" id="a-autoid-4-announce"> No, gracias </button> aka locator("#a-autoid-4-announce")
+    3) <button type="button" class="a-button-text" id="a-autoid-6-announce"> No, gracias </button> aka locator("#a-autoid-6-announce")
+    4) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-announce")
+    5) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-ld-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-ld-announce")
 
 Call log:
-  - waiting for locator("a.hmenu-item:has-text(\"Electrónicos\")")
+    - checking visibility of locator("text=\"No, gracias\"")
 
-2025-05-24 03:50:33,637 - INFO - Starting the purchase flow...
-2025-05-24 03:50:35,740 - INFO - Opening Amazon...
-2025-05-24 03:50:36,073 - INFO - Navigated to URL: https://www.amazon.com.mx/
-2025-05-24 03:50:37,075 - INFO - Clicking on the login button...
-2025-05-24 03:50:37,075 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
-2025-05-24 03:50:43,590 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
-2025-05-24 03:50:43,974 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
-2025-05-24 03:50:44,980 - INFO - Login
-2025-05-24 03:50:45,511 - INFO - \U0001f4e7 Email entered.
-2025-05-24 03:50:45,511 - INFO - Waiting for element '#continue' to be clickable...
-2025-05-24 03:50:45,519 - INFO - Text found in '#continue': 'Continuar'
-2025-05-24 03:50:45,545 - INFO - \u2705 "Continuar" has been pressed.
-2025-05-24 03:50:47,151 - INFO - \U0001f512 Password entered.
-2025-05-24 03:50:47,151 - INFO - Waiting for element '#signInSubmit' to be clickable...
-2025-05-24 03:50:47,157 - INFO - Text found in '#signInSubmit': ''
-2025-05-24 03:50:47,203 - INFO - \u2705 "" has been pressed.
-2025-05-24 03:50:47,203 - INFO - \u2705 Login process completed.
-2025-05-24 03:50:48,216 - INFO - Verifying login...
-2025-05-24 03:50:48,232 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
-2025-05-24 03:50:48,232 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
-2025-05-24 03:50:49,248 - INFO - Verify and Click on the hamburger menu...
-2025-05-24 03:50:49,248 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
-2025-05-24 03:50:49,257 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
-2025-05-24 03:50:49,290 - INFO - \u2705 "Todo" has been pressed.
-2025-05-24 03:50:50,293 - INFO - Clicking on the Electronics option...
-2025-05-24 03:50:50,293 - INFO - Clicking on the hamburger menu option: Electrónicos
-2025-05-24 03:50:50,293 - INFO - Selector: a.hmenu-item >> text="Electrónicos"
-2025-05-24 03:50:50,293 - INFO - Waiting for element 'a.hmenu-item >> text="Electrónicos"' to be clickable...
-2025-05-24 03:50:50,786 - WARNING - Could not retrieve text from a.hmenu-item >> text="Electrónicos": Locator.inner_text: Error: strict mode violation: locator("a.hmenu-item").locator("text=\"Electrónicos\"") resolved to 4 elements:
-    1) <div>Electrónicos\u21b5</div> aka get_by_role("button", name="Electrónicos")
-    2) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(2)
-    3) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(4)
-    4) <div>Electrónicos\u21b5</div> aka locator(".hmenu-translateX-left > #hmenu-content > .hmenu > section:nth-child(5) > ul > li:nth-child(4) > .hmenu-item > div")
+2025-05-24 15:26:41,536 - INFO - \U0001f6d2 Product added to cart. Cart count: 1
+2025-05-24 15:26:41,536 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 15:26:41,536 - INFO - Waiting for element '#nav-cart' to be clickable...
+2025-05-24 15:26:41,544 - INFO - Text found in '#nav-cart': '1 Carrito'
+2025-05-24 15:27:03,443 - INFO - \u2705 "1 Carrito" has been pressed.
+2025-05-24 15:27:04,449 - INFO - Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 15:27:14,462 - WARNING - Could not retrieve text from #buy-now-button: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 15:27:24,470 - ERROR - \u274c Failed to click "#buy-now-button": Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 15:30:57,242 - INFO - Starting the purchase flow...
+2025-05-24 15:30:59,339 - INFO - Opening Amazon...
+2025-05-24 15:31:00,130 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 15:31:01,140 - INFO - Clicking on the login button...
+2025-05-24 15:31:01,140 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 15:31:01,165 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 15:31:01,392 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 15:31:02,394 - INFO - Login
+2025-05-24 15:31:02,928 - INFO - \U0001f4e7 Email entered.
+2025-05-24 15:31:02,928 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 15:31:02,935 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 15:31:02,957 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 15:31:04,628 - INFO - \U0001f512 Password entered.
+2025-05-24 15:31:04,628 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 15:31:04,636 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 15:31:04,682 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:31:04,683 - INFO - \u2705 Login process completed.
+2025-05-24 15:31:05,688 - INFO - Verifying login...
+2025-05-24 15:31:05,722 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 15:31:05,722 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 15:31:06,735 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 15:31:06,735 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 15:31:06,746 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 15:31:06,785 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 15:31:07,788 - INFO - Clicking on the Electronics option...
+2025-05-24 15:31:07,822 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 15:31:08,841 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 15:31:13,846 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 15:31:14,554 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 15:31:17,081 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 15:31:29,064 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:31:34,596 - INFO - Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 15:31:34,620 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 15:31:34,687 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:32:14,848 - INFO - \U0001f6d1 Popup closed with button: 'no, gracias'
+2025-05-24 15:32:15,871 - INFO - \U0001f6d2 Product added to cart. Cart count: 3
+2025-05-24 15:32:15,871 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 15:32:15,871 - INFO - Waiting for element '#nav-cart' to be clickable...
+2025-05-24 15:32:15,880 - INFO - Text found in '#nav-cart': '3 Carrito'
+2025-05-24 15:32:16,038 - INFO - \u2705 "3 Carrito" has been pressed.
+2025-05-24 15:32:17,045 - INFO - Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 15:32:27,051 - WARNING - Could not retrieve text from #buy-now-button: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+    - waiting for" https://www.amazon.com.mx/gp/cart/view.html?ref_=nav_cart" navigation to finish...
+    - navigated to "https://www.amazon.com.mx/gp/cart/view.html?ref_=nav_cart"
+
+2025-05-24 15:32:37,062 - ERROR - \u274c Failed to click "#buy-now-button": Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+    - waiting for" https://www.amazon.com.mx/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2" navigation to finish...
+    - navigated to "https://www.amazon.com.mx/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2"
+
+2025-05-24 15:38:02,081 - INFO - Starting the purchase flow...
+2025-05-24 15:38:04,203 - INFO - Opening Amazon...
+2025-05-24 15:38:04,960 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 15:38:05,966 - INFO - Clicking on the login button...
+2025-05-24 15:38:05,966 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 15:38:05,994 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 15:38:06,244 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 15:38:07,257 - INFO - Login
+2025-05-24 15:38:07,784 - INFO - \U0001f4e7 Email entered.
+2025-05-24 15:38:07,785 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 15:38:07,792 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 15:38:07,819 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 15:38:09,486 - INFO - \U0001f512 Password entered.
+2025-05-24 15:38:09,486 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 15:38:09,492 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 15:38:09,533 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:38:09,533 - INFO - \u2705 Login process completed.
+2025-05-24 15:38:10,545 - INFO - Verifying login...
+2025-05-24 15:38:10,557 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 15:38:10,558 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 15:38:11,568 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 15:38:11,568 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 15:38:11,576 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 15:38:11,608 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 15:38:12,623 - INFO - Clicking on the Electronics option...
+2025-05-24 15:38:12,663 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 15:38:13,680 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 15:38:18,689 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 15:38:19,528 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 15:38:22,122 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 15:38:34,554 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:38:41,568 - INFO - Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 15:38:41,593 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 15:38:41,665 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:38:42,998 - WARNING - \u26a0\ufe0f Failed to close popup: Locator.is_visible: Error: strict mode violation: locator("text=\"No, gracias\"") resolved to 5 elements:
+    1) <button type="button" class="a-button-text" id="a-autoid-2-announce"> No, gracias </button> aka locator("#a-autoid-2-announce")
+    2) <button type="button" class="a-button-text" id="a-autoid-4-announce"> No, gracias </button> aka locator("#a-autoid-4-announce")
+    3) <button type="button" class="a-button-text" id="a-autoid-6-announce"> No, gracias </button> aka locator("#a-autoid-6-announce")
+    4) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-announce")
+    5) <span aria-hidden="true" class="a-button-text" id="attachSiNoCoverage-ld-announce"> No, gracias </span> aka locator("#attachSiNoCoverage-ld-announce")
 
 Call log:
-  - waiting for locator("a.hmenu-item").locator("text=\"Electrónicos\"")
+    - checking visibility of locator("text=\"No, gracias\"")
 
-2025-05-24 03:50:51,215 - ERROR - \u274c Failed to click "a.hmenu-item >> text="Electrónicos"": Locator.is_enabled: Error: strict mode violation: locator("a.hmenu-item").locator("text=\"Electrónicos\"") resolved to 4 elements:
-    1) <div>Electrónicos\u21b5</div> aka get_by_role("button", name="Electrónicos")
-    2) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(2)
-    3) <a class="hmenu-item" href="/gp/browse.html?node=21121850011&ref_=nav_em_0_2_26_9">Electrónicos</a> aka get_by_role("dialog").get_by_text("Electrónicos", exact=True).nth(4)
-    4) <div>Electrónicos\u21b5</div> aka locator(".hmenu-translateX-left > #hmenu-content > .hmenu > section:nth-child(5) > ul > li:nth-child(4) > .hmenu-item > div")
-
+2025-05-24 15:38:44,020 - INFO - \U0001f6d2 Product added to cart. Cart count: 1
+2025-05-24 15:38:44,020 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 15:38:44,020 - INFO - Waiting for element '#nav-cart' to be clickable...
+2025-05-24 15:38:44,028 - INFO - Text found in '#nav-cart': '1 Carrito'
+2025-05-24 15:39:14,045 - ERROR - \u274c Failed to click "1 Carrito": Locator.click: Timeout 30000ms exceeded.
 Call log:
-  - waiting for locator("a.hmenu-item").locator("text=\"Electrónicos\"")
+  - waiting for locator("#nav-cart")
+    - locator resolved to <a id="nav-cart" aria-label="1 artículo en el carrito" href="/gp/cart/view.html?ref_=nav_cart" class="nav-a nav-a-2 nav-progressive-attribute">…</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    58 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
 
+2025-05-24 15:39:15,060 - INFO - Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 15:39:15,071 - INFO - Text found in '#buy-now-button': ''
+2025-05-24 15:39:39,580 - ERROR - \u274c Failed to click "#buy-now-button": Locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("#buy-now-button")
+    - locator resolved to <input type="submit" id="buy-now-button" name="submit.buy-now" title="Comprar ahora" data-hover="__dims__" class="a-button-input" aria-labelledby="submit.buy-now-announce"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <span class="a-list-item">NUESTRA PROMESA DE SATISFACCIÓN: Contamos con una…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <span class="a-list-item">PROCESOS DE RECLAMACIÓN ÁGILES Y SENCILLOS: Estam…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+  2 × retrying click action
+      - waiting 100ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+  11 × retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <span class="a-list-item">NUESTRA PROMESA DE SATISFACCIÓN: Contamos con una…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <span class="a-list-item">PROCESOS DE RECLAMACIÓN ÁGILES Y SENCILLOS: Estam…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <h1 id="attach-warranty-header" class="a-size-medium a-spacing-none a-color-base a-text-center"> Agregar a tu pedido </h1> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <span class="a-list-item">NUESTRA PROMESA DE SATISFACCIÓN: Contamos con una…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <span class="a-list-item">PROCESOS DE RECLAMACIÓN ÁGILES Y SENCILLOS: Estam…</span> from <div class="attach-dss-modal-layer">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+
+2025-05-24 15:43:44,140 - INFO - Starting the purchase flow...
+2025-05-24 15:43:46,256 - INFO - Opening Amazon...
+2025-05-24 15:43:47,281 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 15:43:48,290 - INFO - Clicking on the login button...
+2025-05-24 15:43:48,290 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 15:43:48,317 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 15:43:48,519 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 15:43:49,535 - INFO - Login
+2025-05-24 15:43:50,065 - INFO - \U0001f4e7 Email entered.
+2025-05-24 15:43:50,065 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 15:43:50,073 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 15:43:50,097 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 15:43:51,767 - INFO - \U0001f512 Password entered.
+2025-05-24 15:43:51,767 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 15:43:51,773 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 15:43:51,813 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:43:51,813 - INFO - \u2705 Login process completed.
+2025-05-24 15:43:52,823 - INFO - Verifying login...
+2025-05-24 15:43:52,842 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 15:43:52,842 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 15:43:53,850 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 15:43:53,850 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 15:43:53,859 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 15:43:53,900 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 15:43:54,904 - INFO - Clicking on the Electronics option...
+2025-05-24 15:43:54,945 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 15:43:55,957 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 15:44:00,968 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 15:44:01,795 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 15:44:04,396 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 15:44:22,016 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:44:27,011 - INFO - Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 15:44:27,034 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 15:44:27,132 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:44:28,993 - INFO - \U0001f5b1\ufe0f Clicked outside warranty popup at (555, 0)
+2025-05-24 15:44:30,014 - INFO - \U0001f6d2 Product added to cart. Cart count: 2
+2025-05-24 15:44:30,014 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 15:44:30,014 - INFO - Waiting for element '#nav-cart' to be clickable...
+2025-05-24 15:44:30,022 - INFO - Text found in '#nav-cart': '2 Carrito'
+2025-05-24 15:44:30,217 - INFO - \u2705 "2 Carrito" has been pressed.
+2025-05-24 15:44:31,221 - INFO - Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 15:44:41,229 - WARNING - Could not retrieve text from #buy-now-button: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 15:44:51,239 - ERROR - \u274c Failed to click "#buy-now-button": Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 15:57:03,547 - INFO - Starting the purchase flow...
+2025-05-24 15:57:05,689 - INFO - Opening Amazon...
+2025-05-24 15:57:06,416 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 15:57:07,417 - INFO - Clicking on the login button...
+2025-05-24 15:57:07,418 - INFO - Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 15:57:07,444 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 15:57:07,674 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 15:57:08,677 - INFO - Login
+2025-05-24 15:57:09,208 - INFO - \U0001f4e7 Email entered.
+2025-05-24 15:57:09,208 - INFO - Waiting for element '#continue' to be clickable...
+2025-05-24 15:57:09,216 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 15:57:09,243 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 15:57:11,041 - INFO - \U0001f512 Password entered.
+2025-05-24 15:57:11,041 - INFO - Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 15:57:11,050 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 15:57:11,096 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:57:11,096 - INFO - \u2705 Login process completed.
+2025-05-24 15:57:12,104 - INFO - Verifying login...
+2025-05-24 15:57:12,117 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 15:57:12,117 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 15:57:13,119 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 15:57:13,119 - INFO - Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 15:57:13,132 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 15:57:13,178 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 15:57:14,192 - INFO - Clicking on the Electronics option...
+2025-05-24 15:57:14,227 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 15:57:15,248 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 15:57:20,260 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 15:57:21,195 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 15:57:23,945 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 15:57:25,217 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 15:57:26,234 - INFO - Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 15:57:26,250 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 15:57:26,589 - INFO - \u2705 "" has been pressed.
+2025-05-24 15:57:27,613 - INFO - \u2705 Warranty popup not visible.
+2025-05-24 15:57:28,629 - INFO - \U0001f6d2 Product added to cart. Cart count: 1
+2025-05-24 15:57:28,629 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 15:57:28,629 - INFO - Waiting for element '#nav-cart' to be clickable...
+2025-05-24 15:57:28,638 - INFO - Text found in '#nav-cart': '1 Carrito'
+2025-05-24 15:57:28,868 - INFO - \u2705 "1 Carrito" has been pressed.
+2025-05-24 15:57:29,871 - INFO - Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 15:57:39,873 - WARNING - Could not retrieve text from #buy-now-button: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 15:57:49,886 - ERROR - \u274c Failed to click "#buy-now-button": Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 16:02:27,067 - INFO - Starting the purchase flow...
+2025-05-24 16:02:29,183 - INFO - Opening Amazon...
+2025-05-24 16:02:30,188 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 16:02:31,193 - INFO - Clicking on the login button...
+2025-05-24 16:02:31,194 - INFO - \U0001f50d Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 16:02:31,745 - INFO - Text found in '#nav-link-accountList': 'Hola, identifícate Cuenta y Listas'
+2025-05-24 16:02:31,987 - INFO - \u2705 "Hola, identifícate Cuenta y Listas" has been pressed.
+2025-05-24 16:02:32,995 - INFO - Login
+2025-05-24 16:02:33,525 - INFO - \U0001f4e7 Email entered.
+2025-05-24 16:02:33,525 - INFO - \U0001f50d Waiting for element '#continue' to be clickable...
+2025-05-24 16:02:34,070 - INFO - Text found in '#continue': 'Continuar'
+2025-05-24 16:02:34,505 - INFO - \u2705 "Continuar" has been pressed.
+2025-05-24 16:02:35,255 - INFO - \U0001f512 Password entered.
+2025-05-24 16:02:35,255 - INFO - \U0001f50d Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 16:02:35,787 - INFO - Text found in '#signInSubmit': ''
+2025-05-24 16:02:35,824 - INFO - \u2705 "" has been pressed.
+2025-05-24 16:02:35,824 - INFO - \u2705 Login process completed.
+2025-05-24 16:02:36,830 - INFO - Verifying login...
+2025-05-24 16:02:36,847 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 16:02:36,847 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 16:02:37,851 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 16:02:37,851 - INFO - \U0001f50d Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 16:02:38,388 - INFO - Text found in '#nav-hamburger-menu': 'Todo'
+2025-05-24 16:02:38,425 - INFO - \u2705 "Todo" has been pressed.
+2025-05-24 16:02:39,431 - INFO - Clicking on the Electronics option...
+2025-05-24 16:02:39,470 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 16:02:40,479 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 16:02:45,486 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 16:02:46,220 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 16:02:48,760 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 16:02:49,989 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 16:02:50,994 - INFO - \U0001f50d Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 16:02:51,549 - INFO - Text found in '#add-to-cart-button': ''
+2025-05-24 16:02:51,792 - INFO - \u2705 "" has been pressed.
+2025-05-24 16:02:52,812 - INFO - \u2705 Warranty popup not visible.
+2025-05-24 16:02:53,831 - INFO - \U0001f6d2 Product added to cart. Cart count: 2
+2025-05-24 16:02:53,831 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 16:02:53,831 - INFO - \U0001f50d Waiting for element '#nav-cart' to be clickable...
+2025-05-24 16:02:54,359 - INFO - Text found in '#nav-cart': '2 Carrito'
+2025-05-24 16:02:54,518 - INFO - \u2705 "2 Carrito" has been pressed.
+2025-05-24 16:02:55,531 - INFO - \U0001f50d Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 16:03:05,541 - ERROR - \u274c Failed to click "#buy-now-button": Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button") to be visible
+
+2025-05-24 16:05:13,179 - INFO - Starting the purchase flow...
+2025-05-24 16:05:15,283 - INFO - Opening Amazon...
+2025-05-24 16:05:16,070 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 16:05:17,080 - INFO - Clicking on the login button...
+2025-05-24 16:05:17,080 - INFO - \U0001f50d Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 16:05:18,856 - INFO - \u2705 Clicked on #nav-link-accountList
+2025-05-24 16:05:19,873 - INFO - Login
+2025-05-24 16:05:20,402 - INFO - \U0001f4e7 Email entered.
+2025-05-24 16:05:20,402 - INFO - \U0001f50d Waiting for element '#continue' to be clickable...
+2025-05-24 16:05:21,955 - INFO - \u2705 Clicked on #continue
+2025-05-24 16:05:23,611 - INFO - \U0001f512 Password entered.
+2025-05-24 16:05:23,611 - INFO - \U0001f50d Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 16:05:25,182 - INFO - \u2705 Clicked on #signInSubmit
+2025-05-24 16:05:25,182 - INFO - \u2705 Login process completed.
+2025-05-24 16:05:26,188 - INFO - Verifying login...
+2025-05-24 16:05:26,202 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 16:05:26,202 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 16:05:27,203 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 16:05:27,204 - INFO - \U0001f50d Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 16:05:28,764 - INFO - \u2705 Clicked on #nav-hamburger-menu
+2025-05-24 16:05:29,767 - INFO - Clicking on the Electronics option...
+2025-05-24 16:05:29,807 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 16:05:30,822 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 16:05:35,830 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 16:05:36,553 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 16:05:39,095 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 16:05:40,339 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 16:05:41,343 - INFO - \U0001f50d Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 16:05:43,564 - INFO - \u2705 Clicked on #add-to-cart-button
+2025-05-24 16:05:45,416 - INFO - \U0001f5b1\ufe0f Clicked outside warranty popup at (555, 0)
+2025-05-24 16:05:46,442 - INFO - \U0001f6d2 Product added to cart. Cart count: 3
+2025-05-24 16:05:46,442 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 16:05:46,442 - INFO - \U0001f50d Waiting for element '#nav-cart' to be clickable...
+2025-05-24 16:05:48,194 - INFO - \u2705 Clicked on #nav-cart
+2025-05-24 16:05:49,210 - INFO - \U0001f50d Waiting for element '#buy-now-button' to be clickable...
+2025-05-24 16:06:00,234 - ERROR - \u274c Failed to click '#buy-now-button': Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#buy-now-button")
+
+2025-05-24 16:11:29,268 - INFO - Starting the purchase flow...
+2025-05-24 16:11:31,377 - INFO - Opening Amazon...
+2025-05-24 16:11:32,649 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 16:11:33,650 - INFO - Clicking on the login button...
+2025-05-24 16:11:33,651 - INFO - \U0001f50d Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 16:11:35,416 - INFO - \u2705 Clicked on #nav-link-accountList
+2025-05-24 16:11:36,418 - INFO - Login
+2025-05-24 16:11:36,944 - INFO - \U0001f4e7 Email entered.
+2025-05-24 16:11:36,945 - INFO - \U0001f50d Waiting for element '#continue' to be clickable...
+2025-05-24 16:11:38,498 - INFO - \u2705 Clicked on #continue
+2025-05-24 16:11:39,802 - INFO - \U0001f512 Password entered.
+2025-05-24 16:11:39,802 - INFO - \U0001f50d Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 16:11:41,364 - INFO - \u2705 Clicked on #signInSubmit
+2025-05-24 16:11:41,365 - INFO - \u2705 Login process completed.
+2025-05-24 16:11:42,370 - INFO - Verifying login...
+2025-05-24 16:11:42,388 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 16:11:42,388 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 16:11:43,392 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 16:11:43,392 - INFO - \U0001f50d Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 16:11:44,952 - INFO - \u2705 Clicked on #nav-hamburger-menu
+2025-05-24 16:11:45,958 - INFO - Clicking on the Electronics option...
+2025-05-24 16:11:45,994 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 16:11:47,011 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 16:11:52,019 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 16:11:52,856 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 16:11:55,511 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 16:11:56,750 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 16:11:57,753 - INFO - \U0001f50d Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 16:11:59,604 - INFO - \u2705 Clicked on #add-to-cart-button
+2025-05-24 16:12:01,485 - INFO - \U0001f5b1\ufe0f Clicked outside warranty popup at (555, 0)
+2025-05-24 16:12:02,512 - INFO - \U0001f6d2 Product added to cart. Cart count: 4
+2025-05-24 16:12:02,512 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 16:12:02,512 - INFO - \U0001f50d Waiting for element '#nav-cart' to be clickable...
+2025-05-24 16:12:04,211 - INFO - \u2705 Clicked on #nav-cart
+2025-05-24 16:12:05,219 - INFO - \U0001f50d Waiting for element 'span#submit\\.buy-now' to be clickable...
+2025-05-24 16:12:16,242 - ERROR - \u274c Failed to click 'span#submit\.buy-now': Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("span#submit\\.buy-now")
+
+2025-05-24 16:25:06,457 - INFO - Starting the purchase flow...
+2025-05-24 16:25:08,556 - INFO - Opening Amazon...
+2025-05-24 16:25:09,454 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 16:25:10,459 - INFO - Clicking on the login button...
+2025-05-24 16:25:10,460 - INFO - \U0001f50d Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 16:25:12,253 - INFO - \u2705 Clicked on #nav-link-accountList
+2025-05-24 16:25:13,256 - INFO - Login
+2025-05-24 16:25:13,782 - INFO - \U0001f4e7 Email entered.
+2025-05-24 16:25:13,782 - INFO - \U0001f50d Waiting for element '#continue' to be clickable...
+2025-05-24 16:25:15,343 - INFO - \u2705 Clicked on #continue
+2025-05-24 16:25:16,984 - INFO - \U0001f512 Password entered.
+2025-05-24 16:25:16,985 - INFO - \U0001f50d Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 16:25:18,559 - INFO - \u2705 Clicked on #signInSubmit
+2025-05-24 16:25:18,559 - INFO - \u2705 Login process completed.
+2025-05-24 16:25:19,561 - INFO - Verifying login...
+2025-05-24 16:25:19,586 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 16:25:19,586 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 16:25:20,588 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 16:25:20,588 - INFO - \U0001f50d Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 16:25:22,171 - INFO - \u2705 Clicked on #nav-hamburger-menu
+2025-05-24 16:25:23,185 - INFO - Clicking on the Electronics option...
+2025-05-24 16:25:23,222 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 16:25:24,242 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 16:25:29,252 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 16:25:30,095 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 16:25:32,732 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 16:25:33,980 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 16:25:34,987 - INFO - \U0001f50d Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 16:25:36,941 - INFO - \u2705 Clicked on #add-to-cart-button
+2025-05-24 16:25:38,818 - INFO - \U0001f5b1\ufe0f Clicked outside warranty popup at (555, 0)
+2025-05-24 16:25:39,836 - INFO - \U0001f6d2 Product added to cart. Cart count: 3
+2025-05-24 16:25:39,836 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 16:25:39,836 - INFO - \U0001f50d Waiting for element '#nav-cart' to be clickable...
+2025-05-24 16:25:41,526 - INFO - \u2705 Clicked on #nav-cart
+2025-05-24 16:25:42,533 - INFO - \U0001f50d Waiting for element 'span#submit\\.buy-now' to be clickable...
+2025-05-24 16:25:53,545 - ERROR - \u274c Failed to click 'span#submit\.buy-now': Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("span#submit\\.buy-now")
+
+2025-05-24 16:26:49,343 - INFO - Starting the purchase flow...
+2025-05-24 16:26:51,464 - INFO - Opening Amazon...
+2025-05-24 16:26:52,738 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-24 16:26:53,740 - INFO - Clicking on the login button...
+2025-05-24 16:26:53,740 - INFO - \U0001f50d Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-24 16:26:55,502 - INFO - \u2705 Clicked on #nav-link-accountList
+2025-05-24 16:26:56,513 - INFO - Login
+2025-05-24 16:26:57,045 - INFO - \U0001f4e7 Email entered.
+2025-05-24 16:26:57,045 - INFO - \U0001f50d Waiting for element '#continue' to be clickable...
+2025-05-24 16:26:58,605 - INFO - \u2705 Clicked on #continue
+2025-05-24 16:27:00,269 - INFO - \U0001f512 Password entered.
+2025-05-24 16:27:00,269 - INFO - \U0001f50d Waiting for element '#signInSubmit' to be clickable...
+2025-05-24 16:27:01,850 - INFO - \u2705 Clicked on #signInSubmit
+2025-05-24 16:27:01,850 - INFO - \u2705 Login process completed.
+2025-05-24 16:27:02,852 - INFO - Verifying login...
+2025-05-24 16:27:07,276 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-24 16:27:07,276 - INFO - \u2705 Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-24 16:27:08,282 - INFO - Verify and Click on the hamburger menu...
+2025-05-24 16:27:08,282 - INFO - \U0001f50d Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-24 16:27:09,839 - INFO - \u2705 Clicked on #nav-hamburger-menu
+2025-05-24 16:27:10,853 - INFO - Clicking on the Electronics option...
+2025-05-24 16:27:10,884 - INFO - \u2705 Clicked element with exact text: "Electrónicos"
+2025-05-24 16:27:11,900 - INFO - \U0001f50d Trying to click "Televisión y Video" from hamburger menu...
+2025-05-24 16:27:16,913 - WARNING - \u26a0\ufe0f Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video\u21b5</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-24 16:27:17,663 - INFO - \u2705 Forced click succeeded for "Televisión y Video"
+2025-05-24 16:27:20,189 - INFO - \u2705 Clicked element with label: "DE 48" A 55""
+2025-05-24 16:27:21,413 - INFO - \u2705 Clicked first product: "$4,909.38"
+2025-05-24 16:27:22,420 - INFO - \U0001f50d Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-24 16:27:24,628 - INFO - \u2705 Clicked on #add-to-cart-button
+2025-05-24 16:27:26,502 - INFO - \U0001f5b1\ufe0f Clicked outside warranty popup at (555, 0)
+2025-05-24 16:27:27,521 - INFO - \U0001f6d2 Product added to cart. Cart count: 4
+2025-05-24 16:27:27,521 - INFO - \U0001f7e2 Flow completed: item added to cart.
+2025-05-24 16:27:27,521 - INFO - \U0001f50d Waiting for element '#nav-cart' to be clickable...
+2025-05-24 16:27:29,245 - INFO - \u2705 Clicked on #nav-cart
+2025-05-24 16:27:30,260 - INFO - \U0001f50d Waiting for element "input[name='proceedToRetailCheckout']" to be clickable...
+2025-05-24 16:27:31,967 - INFO - \u2705 Clicked on input[name='proceedToRetailCheckout']
+2025-05-24 16:27:32,979 - INFO - \U0001f7e2 Flow completed: item added to cart and proceeding to checkout.

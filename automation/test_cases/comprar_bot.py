@@ -58,11 +58,39 @@ class BuyBot:
             
             logger.info("Clicking on the Electronics option...")
             
-            utils.click_hamburger_option(
-                    option_text="Electr\u00f3nicos",
+            utils.click_by_exact_text(
+                    css_selector=SELECTORS_AMAZON["hamburger_option_template"],
+                    exact_text="Electrónicos",
             )
             page.wait_for_timeout(1000)
-        input("✅ Press ENTER after verifying login manually...")
+            utils.click_hamburger_item_by_label(
+                    label="Televisión y Video",
+            )
+            page.wait_for_timeout(1000)
 
+            utils.click_text_block_by_label(label='DE 48" A 55"')
+            page.wait_for_timeout(1000)
 
+            utils.click_first_product()
+            page.wait_for_timeout(1000)
 
+            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["add_to_cart"])
+            page.wait_for_timeout(1000)
+
+            utils.close_warranty_popup()
+            page.wait_for_timeout(1000)
+
+            # Paso 3: Verificar que se haya añadido al carrito
+            if utils.confirm_add_to_cart():
+                logger.info("🟢 Flow completed: item added to cart.")
+            else:
+                logger.warning("🔴 Flow warning: item may NOT have been added.")
+
+            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["nav_cart"])
+            page.wait_for_timeout(1000)
+
+            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["buy_now"])
+            page.wait_for_timeout(1000)
+            logger.info("🟢 Flow completed: item added to cart and proceeding to checkout.")
+
+            input("Press Enter to continue...")  # Pausa para permitir al usuario ver la acción

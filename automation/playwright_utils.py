@@ -30,21 +30,28 @@ class PlaywrightUtils:
             selector (str): CSS selector of the element.
             timeout (int): Max wait time (in ms).
         """
-        logger.info(f"Waiting for element {selector!r} to be clickable...")
-        body_text = self.get_visible_text(selector, timeout)
-
+        logger.info(f"🔍 Waiting for element {selector!r} to be clickable...")
 
         try:
-            self.page.wait_for_selector(selector, timeout=timeout, state="visible")
             locator = self.page.locator(selector)
+
+            # Espera explícita hasta que esté visible
+            self.page.wait_for_timeout(1000)  # Da un respiro a la carga
+            locator.wait_for(state="attached", timeout=timeout)
+            locator.wait_for(state="visible", timeout=timeout)
+
+            # Scrollea y espera estabilidad
+            locator.scroll_into_view_if_needed()
+            self.page.wait_for_timeout(500)
 
             if locator.is_enabled():
                 locator.click()
-                logger.info(f'✅ "{body_text}" has been pressed.')
+                logger.info(f"✅ Clicked on {selector}")
             else:
-                logger.warning(f'⚠️ "{body_text}" is visible but not enabled (not clickable).')
+                logger.warning(f"⚠️ {selector} is visible but not enabled.")
+
         except Exception as e:
-            logger.error(f'❌ Failed to click "{body_text or selector}": {e}')
+            logger.error(f"❌ Failed to click '{selector}': {e}")
 
     def login(self, email: str, password: str, selectors: dict, timeout=10000):
         """
@@ -165,16 +172,275 @@ class PlaywrightUtils:
         logger.error(f"❌ Login failed. Still showing: {label}")
         return False
 
-    def click_hamburger_option(self, option_text: str, timeout=5000):
+
+    def click_by_exact_text(self, css_selector: str, exact_text: str, timeout=5000) -> bool:
         """
-        Clicks an item from the Amazon hamburger menu using a dynamic selector.
+        Clicks the first element matching the CSS selector and exact visible text.
 
         Args:
-            option_text (str): The visible text of the menu item (e.g., "Electrónicos").
-            timeout (int): Maximum wait time in milliseconds.
-        """ 
-        logger.info(f"Clicking on the hamburger menu option: {option_text}")
-        selector = f'a.hmenu-item >> text="{option_text}"'
-        logger.info(f"Selector: {selector}")
-        self.wait_for_clickable_and_click(selector, timeout)
+            css_selector (str): Base CSS selector (e.g., 'a.hmenu-item').
+            exact_text (str): Exact visible text to match (e.g., 'Electrónicos').
+            timeout (int): Max wait time (ms).
 
+        Returns:
+            bool: True if click succeeded, False otherwise.
+        """
+        try:
+            self.page.wait_for_selector(css_selector, timeout=timeout)
+            locator = self.page.locator(css_selector).filter(has_text=exact_text)
+            locator.first.click()
+            logger.info(f'✅ Clicked element with exact text: "{exact_text}"')
+            return True
+        except Exception as e:
+            logger.error(f'❌ Could not click element with text "{exact_text}": {e}')
+            return False
+
+    def click_hamburger_item_by_label(self, label: str, timeout=5000) -> bool:
+        """
+        Clicks the first visible hamburger menu item matching the exact label.
+        If normal click fails due to visual obstruction, retries with force=True.
+
+        Args:
+            label (str): Visible text of the menu item (e.g., "Televisión y Video").
+            timeout (int): Max wait time (ms).
+
+        Returns:
+            bool: True if the click succeeds, False otherwise.
+        """
+        try:
+            self.page.wait_for_selector("#hmenu-content", timeout=timeout)
+            locator = self.page.locator("#hmenu-content a.hmenu-item").filter(
+                has_text=label
+            )
+
+            logger.info(f'🔍 Trying to click "{label}" from hamburger menu...')
+            locator.first.click(timeout=timeout)
+            logger.info(f'✅ Clicked menu item: "{label}"')
+            return True
+
+        except Exception as e:
+            logger.warning(f'⚠️ Normal click failed for "{label}", retrying with force=True: {e}')
+
+            try:
+                locator.first.click(timeout=timeout, force=True)
+                logger.info(f'✅ Forced click succeeded for "{label}"')
+                return True
+            except Exception as e_force:
+                logger.error(f'❌ Forced click failed for "{label}": {e_force}')
+                return False
+            
+    def click_text_block_by_label(self, label: str, timeout=5000):
+        """
+        Scrolls and clicks a visible button/span/link block with exact text.
+
+        Args:
+            label (str): Visible text to match (e.g., 'DE 48" A 55"').
+
+        Returns:
+            bool: True if the click succeeded, False otherwise.
+        """
+        try:
+            self.page.wait_for_timeout(1000)
+            locator = self.page.locator("button, a, span, div").filter(has_text=label)
+            locator.first.scroll_into_view_if_needed()
+            locator.first.click()
+            logger.info(f'✅ Clicked element with label: "{label}"')
+            return True
+        except Exception as e:
+            logger.error(f'❌ Failed to click element with label "{label}": {e}')
+            return False
+
+    def click_first_product(self) -> bool:
+        """
+        Clicks the first product in the visible product carousel.
+        Logs the product title before clicking.
+        
+        Returns:
+            bool: True if the product was clicked successfully, False otherwise.
+        """
+        try:
+            selector = "li.octopus-pc-item"
+            first_product = self.page.locator(selector).first
+
+            if not first_product.is_visible():
+                self.page.evaluate("window.scrollTo(0, 0)")
+                self.page.wait_for_timeout(500)
+                first_product.evaluate(
+                    "(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                )
+                self.page.wait_for_timeout(1000)
+
+            # Extraer texto visible dentro del producto (por ejemplo, h2, span o p)
+            product_text = first_product.inner_text().strip().split("\n")[0]
+
+            # Click
+            first_product.click()
+            logger.info(f'✅ Clicked first product: "{product_text}"')
+            return True
+
+        except Exception as e:
+            logger.error(f"❌ Failed to click the first product: {e}")
+            return False
+        
+    def close_any_popup(self, timeout=5000, popup_selector="div.a-popover-wrapper") -> bool:
+        """
+        Tries to close any popup that appears after an action, using either:
+        - Known button labels ("No, gracias", "Cerrar", etc.)
+        - A fallback click outside the popup if it's dismissible.
+
+        Args:
+            timeout (int): Time to wait for popup detection.
+            popup_selector (str): Selector of the popup element (used for bounding box).
+
+        Returns:
+            bool: True if a popup was found and handled, False otherwise.
+        """
+        try:
+            # 1. Buscar botones comunes
+            candidates = [
+                'text="No, gracias"',
+                '[aria-label="Cerrar"]',
+                '[data-action="a-popover-close"]',
+                '.a-button-close',
+                '.a-close-button',
+                'button[aria-label="close"]',
+                'button:has-text("No thanks")',
+                'button:has-text("Skip")',
+            ]
+
+            for selector in candidates:
+                btn = self.page.locator(selector)
+                if btn.is_visible(timeout=timeout):
+                    btn.click()
+                    logger.info(f'🛑 Popup closed with selector: {selector}')
+                    return True
+
+            # 2. Si no hubo botón visible, intentar clic fuera del área
+            popup = self.page.locator(popup_selector)
+            if popup.is_visible(timeout=timeout):
+                box = popup.bounding_box()
+                if box:
+                    x = box["x"] - 50
+                    y = box["y"] - 50
+                    self.page.mouse.click(x, y)
+                    logger.info(f"🖱️ Clicked outside popup at ({x}, {y}) to close it.")
+                    return True
+
+            logger.info("✅ No popup appeared.")
+            return False
+
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to close popup: {e}")
+            return False
+
+
+    def confirm_add_to_cart(self, timeout=5000) -> bool:
+        """
+        Verifies if the product was successfully added to the cart.
+
+        Strategies:
+        - Checks for a cart count badge (like #nav-cart-count)
+        - Looks for success messages
+        - Logs the outcome
+        """
+        try:
+            # Opción 1: Verifica si el contador del carrito incrementó
+            cart_count = self.page.locator("#nav-cart-count")
+            if cart_count.is_visible(timeout=timeout):
+                count_text = cart_count.inner_text().strip()
+                if count_text.isdigit() and int(count_text) > 0:
+                    logger.info(f"🛒 Product added to cart. Cart count: {count_text}")
+                    return True
+
+            # Opción 2: Verifica un mensaje típico
+            success_msg = self.page.locator('text="Agregado al carrito"')
+            if success_msg.is_visible(timeout=timeout):
+                logger.info("✅ Product added to cart - success message found.")
+                return True
+
+            logger.warning("⚠️ Could not confirm product was added to cart.")
+            return False
+
+        except Exception as e:
+            logger.error(f"❌ Error verifying cart addition: {e}")
+            return False
+
+    def click_outside_popup(self, popup_selector="div.a-popover-wrapper", delay=1000) -> bool:
+        """
+        Clicks outside a detected popup to close it if it's dismissible.
+
+        Args:
+            popup_selector (str): The CSS selector of the popup container.
+            delay (int): Time to wait before and after attempting the click.
+
+        Returns:
+            bool: True if the click was performed, False otherwise.
+        """
+        try:
+            self.page.wait_for_timeout(delay)
+
+            # Scroll al tope por si el popup tiene posición fija
+            self.page.evaluate("window.scrollTo(0, 0)")
+            self.page.wait_for_timeout(300)
+
+            popup = self.page.locator(popup_selector)
+            if not popup.is_visible():
+                logger.info("✅ No popup visible to dismiss.")
+                return False
+
+            box = popup.bounding_box()
+            if not box:
+                logger.warning("⚠️ Popup found but bounding box is missing.")
+                return False
+
+            # Calcular una posición segura FUERA del área del popup
+            x = max(box["x"] - 60, 0)
+            y = max(box["y"] - 60, 0)
+
+            # Clic fuera
+            self.page.mouse.click(x, y)
+            self.page.wait_for_timeout(1000)
+
+            logger.info(f"🖱️ Clicked outside popup at coordinates ({x}, {y})")
+            return True
+
+        except Exception as e:
+            logger.error(f"❌ Failed to click outside popup: {e}")
+            return False
+
+    def close_warranty_popup(self, timeout=3000):
+        """
+        Closes the Amazon warranty popup if it appears, by clicking outside its bounds.
+
+        Returns:
+            bool: True if closed successfully, False if it wasn't open or couldn't be closed.
+        """
+        popup_selector = "#attach-warranty-pane"
+
+        try:
+            popup = self.page.locator(popup_selector)
+
+            if not popup.is_visible(timeout=timeout):
+                logger.info("✅ Warranty popup not visible.")
+                return False
+
+            # Obtener posición y tamaño del popup
+            box = popup.bounding_box()
+            if not box:
+                logger.warning("⚠️ Could not retrieve bounding box of warranty popup.")
+                return False
+
+            # Calcular una coordenada fuera del área del popup
+            x = max(box["x"] - 50, 0)
+            y = max(box["y"] - 50, 0)
+
+            # Click fuera del popup
+            self.page.mouse.click(x, y)
+            self.page.wait_for_timeout(800)
+
+            logger.info(f"🖱️ Clicked outside warranty popup at ({x}, {y})")
+            return True
+
+        except Exception as e:
+            logger.error(f"❌ Failed to close warranty popup: {e}")
+            return False
