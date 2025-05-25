@@ -122,6 +122,7 @@ class PlaywrightUtils:
             logger.error(f"❌ Failed to click '{selector}': {error}")
 
     @log_step
+    @safe_action(default=False)
     def click_by_exact_text(
         self, css_selector: str, exact_text: str, timeout=5000
     ) -> bool:
@@ -136,28 +137,22 @@ class PlaywrightUtils:
         Returns:
             bool: True if the click was successful, False otherwise.
         """
-        try:
-            # Wait for the base selector to be available in the DOM
-            self.page.wait_for_selector(css_selector, timeout=timeout)
 
-            # Filter elements by exact visible text
-            locator = self.page.locator(css_selector).filter(
-                has_text=exact_text
-            )
+        # Wait for the base selector to be available in the DOM
+        self.page.wait_for_selector(css_selector, timeout=timeout)
 
-            # Click the first matching element
-            locator.first.click()
+        # Filter elements by exact visible text
+        locator = self.page.locator(css_selector).filter(
+            has_text=exact_text
+        )
 
-            # Log success
-            logger.info(f'✅ Clicked element with exact text: "{exact_text}"')
-            return True
+        # Click the first matching element
+        locator.first.click()
 
-        except Exception as error:
-            # Log and return failure
-            logger.error(
-                f'❌ Could not click element with text "{exact_text}": {error}'
-            )
-            return False
+        # Log success
+        logger.info(f'✅ Clicked element with exact text: "{exact_text}"')
+        return True
+
 
     @log_step
     @safe_action(default=False)
@@ -172,35 +167,25 @@ class PlaywrightUtils:
         Returns:
             bool: True if the click was successful, False otherwise.
         """
+
+        # Wait for the hamburger menu container to be visible
+        self.page.wait_for_selector("#hmenu-content", timeout=timeout)
+
+        # Filter all menu items inside the container that match the exact label
+        locator = self.page.locator("#hmenu-content a.hmenu-item").filter(
+            has_text=label
+        )
         try:
-            # Wait for the hamburger menu container to be visible
-            self.page.wait_for_selector("#hmenu-content", timeout=timeout)
-
-            # Filter all menu items inside the container that match the exact label
-            locator = self.page.locator("#hmenu-content a.hmenu-item").filter(
-                has_text=label
-            )
-
-            logger.debug(f'🔍 Trying to click "{label}" from hamburger menu...')
-
-            # Attempt to click the first matching item
+            # Click the first matching item
             locator.first.click(timeout=timeout)
-            logger.info(f'✅ Clicked menu item: "{label}"')
-            return True
 
         except Exception as error:
             # If normal click fails, try using force=True to bypass visual obstructions
             logger.warning(
                 f'⚠️ Normal click failed for "{label}", retrying with force=True: {error}'
             )
-            try:
-                locator.first.click(timeout=timeout, force=True)
-                logger.info(f'✅ Forced click succeeded for "{label}"')
-                return True
-            except Exception as error_force:
-                # Log complete failure
-                logger.exception(f'❌ Forced click failed for "{label}": {error_force}')
-                return False
+            locator.first.click(timeout=timeout, force=True)
+            logger.info(f'✅ Forced click succeeded for "{label}"')
 
     @log_step
     @safe_action(default=False)
@@ -215,26 +200,19 @@ class PlaywrightUtils:
         Returns:
             bool: True if the click was successful, False otherwise.
         """
-        try:
+
             # Locate the first matching element among all standard clickable tags
-            locator = self.page.locator(ALL_CLICKABLE_ELEMENTS).filter(
-                has_text=label
-            )
+        locator = self.page.locator(ALL_CLICKABLE_ELEMENTS).filter(
+            has_text=label
+        )
 
-            # Scroll the element into view if necessary
-            locator.first.scroll_into_view_if_needed()
+        # Scroll the element into view if necessary
+        locator.first.scroll_into_view_if_needed()
 
-            # Attempt to click the element
-            locator.first.click()
-            logger.info(f'✅ Clicked element with label: "{label}"')
-            return True
-
-        except Exception as error:
-            # Log error if element was not clickable or found
-            logger.exception(
-                f'❌ Failed to click element with label "{label}": {error}'
-            )
-            return False
+        # Attempt to click the element
+        locator.first.click()
+        logger.info(f'✅ Clicked element with label: "{label}"')
+        return True
 
     # --------------------- Product and cart actions ---------------------
 
@@ -248,33 +226,28 @@ class PlaywrightUtils:
         Returns:
             bool: True if successful, False otherwise.
         """
-        try:
-            # Define the selector for product items (carousel or grid)
-            selector = "li.octopus-pc-item"
-            first_product = self.page.locator(selector).first
 
-            # If the product is not immediately visible, scroll to top and bring it into view
-            if not first_product.is_visible():
-                self.page.evaluate("window.scrollTo(0, 0)")
-                self.page.wait_for_timeout(500)
-                first_product.evaluate(
-                    "(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
-                )
-                self.page.wait_for_timeout(1000)
+        # Define the selector for product items (carousel or grid)
+        selector = "li.octopus-pc-item"
+        first_product = self.page.locator(selector).first
 
-            # Extract product name (first line of text)
-            product_text = first_product.inner_text().strip().split("\n")[0]
+        # If the product is not immediately visible, scroll to top and bring it into view
+        if not first_product.is_visible():
+            self.page.evaluate("window.scrollTo(0, 0)")
+            self.page.wait_for_timeout(500)
+            first_product.evaluate(
+                "(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+            )
+            self.page.wait_for_timeout(1000)
 
-            # Click the product
-            first_product.click()
-            logger.info(f'✅ Clicked first product: "{product_text}"')
-            return True
+        # Extract product name (first line of text)
+        product_text = first_product.inner_text().strip().split("\n")[0]
 
-        except Exception as error:
-            # Log and return failure if any step fails
-            logger.exception(f"❌ Failed to click the first product: {error}")
-            return False
-    
+        # Click the product
+        first_product.click()
+        logger.info(f'✅ Clicked first product: "{product_text}"')
+        return True
+
     @safe_action(default=False)
     def confirm_add_to_cart(self, timeout=5000) -> bool:
         """
@@ -286,33 +259,28 @@ class PlaywrightUtils:
         Returns:
             bool: True if the cart contains items, False otherwise.
         """
-        try:
-            # Strategy 1: Check the cart item count badge
-            cart_count = self.page.locator("#nav-cart-count")
-            if cart_count.is_visible(timeout=timeout):
-                count_text = cart_count.inner_text().strip()
-                if count_text.isdigit() and int(count_text) > 0:
-                    logger.info(
-                        f"🛒 Product added to cart. Cart count: {count_text}"
-                    )
-                    return True
 
-            # Strategy 2: Check for a confirmation message
-            success_msg = self.page.locator('text="Agregado al carrito"')
-            if success_msg.is_visible(timeout=timeout):
-                logger.info("✅ Product added to cart - success message found.")
+        # Strategy 1: Check the cart item count badge
+        cart_count = self.page.locator("#nav-cart-count")
+        if cart_count.is_visible(timeout=timeout):
+            count_text = cart_count.inner_text().strip()
+            if count_text.isdigit() and int(count_text) > 0:
+                logger.info(
+                    f"🛒 Product added to cart. Cart count: {count_text}"
+                )
                 return True
 
-            # Neither method confirmed the product was added
-            logger.warning("⚠️ Could not confirm product was added to cart.")
-            return False
+        # Strategy 2: Check for a confirmation message
+        success_msg = self.page.locator('text="Agregado al carrito"')
+        if success_msg.is_visible(timeout=timeout):
+            logger.info("✅ Product added to cart - success message found.")
+            return True
 
-        except Exception as error:
-            # Log any errors during verification
-            logger.error(f"❌ Error verifying cart addition: {error}")
-            return False
+        # Neither method confirmed the product was added
+        logger.warning("⚠️ Could not confirm product was added to cart.")
+        return False
 
-    # --------------------- Auth and validation ---------------------
+ # --------------------- Auth and validation ---------------------
 
     @log_step
     def login(
@@ -432,34 +400,29 @@ class PlaywrightUtils:
         """
         popup_selector = "#attach-warranty-pane"
 
-        try:
-            # Locate the popup element
-            popup = self.page.locator(popup_selector)
 
-            # If popup is not visible, nothing to close
-            if not popup.is_visible(timeout=timeout):
-                logger.info("✅ Warranty popup not visible.")
-                return False
+        # Locate the popup element
+        popup = self.page.locator(popup_selector)
 
-            # Get position and dimensions of the popup
-            box = popup.bounding_box()
-            if not box:
-                logger.warning(
-                    "⚠️ Could not retrieve bounding box of warranty popup."
-                )
-                return False
-
-            # Compute a point outside the popup area
-            x = max(box["x"] - 50, 0)
-            y = max(box["y"] - 50, 0)
-
-            # Simulate a mouse click outside the popup to dismiss it
-            self.page.mouse.click(x, y)
-            self.page.wait_for_timeout(800)
-            logger.info(f"🖱️ Clicked outside warranty popup at ({x}, {y})")
-            return True
-
-        except Exception as error:
-            # Log failure if unable to close popup
-            logger.error(f"❌ Failed to close warranty popup: {error}")
+        # If popup is not visible, nothing to close
+        if not popup.is_visible(timeout=timeout):
+            logger.info("✅ Warranty popup not visible.")
             return False
+
+        # Get position and dimensions of the popup
+        box = popup.bounding_box()
+        if not box:
+            logger.warning(
+                "⚠️ Could not retrieve bounding box of warranty popup."
+            )
+            return False
+
+        # Compute a point outside the popup area
+        x = max(box["x"] - 50, 0)
+        y = max(box["y"] - 50, 0)
+
+        # Simulate a mouse click outside the popup to dismiss it
+        self.page.mouse.click(x, y)
+        self.page.wait_for_timeout(800)
+        logger.info(f"🖱️ Clicked outside warranty popup at ({x}, {y})")
+        return True

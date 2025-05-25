@@ -1,44 +1,43 @@
-2025-05-25 12:48:52,885 - INFO - 🚀 Starting the purchase flow...
-2025-05-25 12:48:53,478 - INFO - 🌐 Opening Amazon homepage...
-2025-05-25 12:48:53,478 - INFO - ➡️ Starting: open_page
-2025-05-25 12:48:54,808 - INFO - Navigated to URL: https://www.amazon.com.mx/
-2025-05-25 12:48:54,809 - INFO - ✅ Finished: open_page
-2025-05-25 12:48:54,809 - INFO - 🔐 Navigating to login...
-2025-05-25 12:48:54,809 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:48:55,816 - DEBUG - 🔍 Waiting for element '#nav-link-accountList' to be clickable...
-2025-05-25 12:48:58,431 - INFO - ✅ Clicked on #nav-link-accountList
-2025-05-25 12:48:58,431 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:48:58,431 - INFO - ➡️ Starting: login
-2025-05-25 12:48:59,973 - INFO - 📧 Email entered.
-2025-05-25 12:48:59,973 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:00,990 - DEBUG - 🔍 Waiting for element '#continue' to be clickable...
-2025-05-25 12:49:01,534 - INFO - ✅ Clicked on #continue
-2025-05-25 12:49:01,534 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:03,188 - INFO - 🔒 Password entered.
-2025-05-25 12:49:03,188 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:04,202 - DEBUG - 🔍 Waiting for element '#signInSubmit' to be clickable...
-2025-05-25 12:49:04,775 - INFO - ✅ Clicked on #signInSubmit
-2025-05-25 12:49:04,776 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:04,776 - INFO - ✅ Login process completed.
-2025-05-25 12:49:04,776 - INFO - ✅ Finished: login
-2025-05-25 12:49:04,776 - INFO - 🔍 Verifying successful login...
-2025-05-25 12:49:04,776 - INFO - ➡️ Starting: validate_login
-2025-05-25 12:49:05,801 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
-2025-05-25 12:49:05,801 - INFO - ✅ Login confirmed. Label now shows: Hola projects Cuenta y Listas
-2025-05-25 12:49:05,801 - INFO - ✅ Finished: validate_login
-2025-05-25 12:49:05,801 - INFO - 📂 Opening hamburger menu...
-2025-05-25 12:49:05,801 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:06,803 - DEBUG - 🔍 Waiting for element '#nav-hamburger-menu' to be clickable...
-2025-05-25 12:49:07,352 - INFO - ✅ Clicked on #nav-hamburger-menu
-2025-05-25 12:49:07,352 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:07,352 - INFO - 📁 Selecting 'Electrónicos' category...
-2025-05-25 12:49:07,352 - INFO - ➡️ Starting: click_by_exact_text
-2025-05-25 12:49:08,395 - INFO - ✅ Clicked element with exact text: "Electrónicos"
-2025-05-25 12:49:08,395 - INFO - ✅ Finished: click_by_exact_text
-2025-05-25 12:49:08,395 - INFO - 📺 Selecting 'Televisión y Video' subcategory...
-2025-05-25 12:49:08,395 - INFO - ➡️ Starting: click_hamburger_item_by_label
-2025-05-25 12:49:09,414 - DEBUG - 🔍 Trying to click "Televisión y Video" from hamburger menu...
-2025-05-25 12:49:14,420 - WARNING - ⚠️ Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+2025-05-25 13:16:34,377 - INFO - 🚀 Starting the purchase flow...
+2025-05-25 13:16:34,964 - INFO - 🌐 Opening Amazon homepage...
+2025-05-25 13:16:34,964 - INFO - ➡️ Starting: open_page
+2025-05-25 13:16:36,770 - INFO - Navigated to URL: https://www.amazon.com.mx/
+2025-05-25 13:16:36,770 - INFO - ✅ Finished: open_page
+2025-05-25 13:16:36,770 - INFO - 🔐 Navigating to login...
+2025-05-25 13:16:36,770 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:16:37,774 - DEBUG - 🔍 Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-25 13:16:38,564 - INFO - ✅ Clicked on #nav-link-accountList
+2025-05-25 13:16:38,564 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:16:38,564 - INFO - ➡️ Starting: login
+2025-05-25 13:16:40,112 - INFO - 📧 Email entered.
+2025-05-25 13:16:40,112 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:16:41,120 - DEBUG - 🔍 Waiting for element '#continue' to be clickable...
+2025-05-25 13:16:41,680 - INFO - ✅ Clicked on #continue
+2025-05-25 13:16:41,680 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:16:43,075 - INFO - 🔒 Password entered.
+2025-05-25 13:16:43,075 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:16:44,083 - DEBUG - 🔍 Waiting for element '#signInSubmit' to be clickable...
+2025-05-25 13:16:44,651 - INFO - ✅ Clicked on #signInSubmit
+2025-05-25 13:16:44,651 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:16:44,651 - INFO - ✅ Login process completed.
+2025-05-25 13:16:44,651 - INFO - ✅ Finished: login
+2025-05-25 13:16:44,651 - INFO - 🔍 Verifying successful login...
+2025-05-25 13:16:44,651 - INFO - ➡️ Starting: validate_login
+2025-05-25 13:16:47,516 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-25 13:16:47,516 - INFO - ✅ Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-25 13:16:47,516 - INFO - ✅ Finished: validate_login
+2025-05-25 13:16:47,516 - INFO - 📂 Opening hamburger menu...
+2025-05-25 13:16:47,516 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:16:48,519 - DEBUG - 🔍 Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-25 13:16:49,081 - INFO - ✅ Clicked on #nav-hamburger-menu
+2025-05-25 13:16:49,081 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:16:49,081 - INFO - 📁 Selecting 'Electrónicos' category...
+2025-05-25 13:16:49,081 - INFO - ➡️ Starting: click_by_exact_text
+2025-05-25 13:16:50,118 - INFO - ✅ Clicked element with exact text: "Electrónicos"
+2025-05-25 13:16:50,118 - INFO - ✅ Finished: click_by_exact_text
+2025-05-25 13:16:50,118 - INFO - 📺 Selecting 'Televisión y Video' subcategory...
+2025-05-25 13:16:50,118 - INFO - ➡️ Starting: click_hamburger_item_by_label
+2025-05-25 13:16:56,143 - WARNING - ⚠️ Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
 Call log:
   - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
     - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video↵</a>
@@ -65,36 +64,36 @@ Call log:
      - retrying click action
        - waiting 500ms
 
-2025-05-25 12:49:15,092 - INFO - ✅ Forced click succeeded for "Televisión y Video"
-2025-05-25 12:49:15,092 - INFO - ✅ Finished: click_hamburger_item_by_label
-2025-05-25 12:49:15,092 - INFO - 📏 Filtering by size 'DE 48" A 55"'...
-2025-05-25 12:49:15,092 - INFO - ➡️ Starting: click_text_block_by_label
-2025-05-25 12:49:16,628 - INFO - ✅ Clicked element with label: "DE 48" A 55""
-2025-05-25 12:49:16,629 - INFO - ✅ Finished: click_text_block_by_label
-2025-05-25 12:49:16,629 - INFO - 🛍️ Clicking the first visible product...
-2025-05-25 12:49:16,629 - INFO - ➡️ Starting: click_first_product
-2025-05-25 12:49:17,861 - INFO - ✅ Clicked first product: "$7,990.00"
-2025-05-25 12:49:17,862 - INFO - ✅ Finished: click_first_product
-2025-05-25 12:49:17,862 - INFO - ➕ Adding product to cart...
-2025-05-25 12:49:17,862 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:18,872 - DEBUG - 🔍 Waiting for element '#add-to-cart-button' to be clickable...
-2025-05-25 12:49:19,723 - INFO - ✅ Clicked on #add-to-cart-button
-2025-05-25 12:49:19,723 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:19,723 - INFO - 🔧 Checking for warranty popup...
-2025-05-25 12:49:19,723 - INFO - ➡️ Starting: close_warranty_popup
-2025-05-25 12:49:20,739 - INFO - ✅ Warranty popup not visible.
-2025-05-25 12:49:20,740 - INFO - ✅ Finished: close_warranty_popup
-2025-05-25 12:49:20,740 - INFO - 🧾 Confirming product is in the cart...
-2025-05-25 12:49:20,748 - INFO - 🛒 Product added to cart. Cart count: 4
-2025-05-25 12:49:20,749 - INFO - ✅ Item successfully added to cart.
-2025-05-25 12:49:20,749 - INFO - 🛒 Navigating to cart...
-2025-05-25 12:49:20,749 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:21,759 - DEBUG - 🔍 Waiting for element '#nav-cart' to be clickable...
-2025-05-25 12:49:22,458 - INFO - ✅ Clicked on #nav-cart
-2025-05-25 12:49:22,458 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:22,458 - INFO - 💳 Proceeding to checkout...
-2025-05-25 12:49:22,458 - INFO - ➡️ Starting: wait_for_clickable_and_click
-2025-05-25 12:49:23,470 - DEBUG - 🔍 Waiting for element "input[name='proceedToRetailCheckout']" to be clickable...
-2025-05-25 12:49:25,008 - INFO - ✅ Clicked on input[name='proceedToRetailCheckout']
-2025-05-25 12:49:25,008 - INFO - ✅ Finished: wait_for_clickable_and_click
-2025-05-25 12:49:25,008 - INFO - 🏁 Purchase flow completed successfully.
+2025-05-25 13:16:56,913 - INFO - ✅ Forced click succeeded for "Televisión y Video"
+2025-05-25 13:16:56,913 - INFO - ✅ Finished: click_hamburger_item_by_label
+2025-05-25 13:16:56,913 - INFO - 📏 Filtering by size 'DE 48" A 55"'...
+2025-05-25 13:16:56,914 - INFO - ➡️ Starting: click_text_block_by_label
+2025-05-25 13:16:58,590 - INFO - ✅ Clicked element with label: "DE 48" A 55""
+2025-05-25 13:16:58,590 - INFO - ✅ Finished: click_text_block_by_label
+2025-05-25 13:16:58,590 - INFO - 🛍️ Clicking the first visible product...
+2025-05-25 13:16:58,590 - INFO - ➡️ Starting: click_first_product
+2025-05-25 13:16:59,832 - INFO - ✅ Clicked first product: "$7,990.00"
+2025-05-25 13:16:59,832 - INFO - ✅ Finished: click_first_product
+2025-05-25 13:16:59,832 - INFO - ➕ Adding product to cart...
+2025-05-25 13:16:59,832 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:17:00,834 - DEBUG - 🔍 Waiting for element '#add-to-cart-button' to be clickable...
+2025-05-25 13:17:01,677 - INFO - ✅ Clicked on #add-to-cart-button
+2025-05-25 13:17:01,677 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:17:01,677 - INFO - 🔧 Checking for warranty popup...
+2025-05-25 13:17:01,677 - INFO - ➡️ Starting: close_warranty_popup
+2025-05-25 13:17:02,700 - INFO - ✅ Warranty popup not visible.
+2025-05-25 13:17:02,700 - INFO - ✅ Finished: close_warranty_popup
+2025-05-25 13:17:02,700 - INFO - 🧾 Confirming product is in the cart...
+2025-05-25 13:17:02,709 - INFO - 🛒 Product added to cart. Cart count: 5
+2025-05-25 13:17:02,710 - INFO - ✅ Item successfully added to cart.
+2025-05-25 13:17:02,710 - INFO - 🛒 Navigating to cart...
+2025-05-25 13:17:02,710 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:17:03,716 - DEBUG - 🔍 Waiting for element '#nav-cart' to be clickable...
+2025-05-25 13:17:04,415 - INFO - ✅ Clicked on #nav-cart
+2025-05-25 13:17:04,415 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:17:04,415 - INFO - 💳 Proceeding to checkout...
+2025-05-25 13:17:04,415 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 13:17:05,425 - DEBUG - 🔍 Waiting for element "input[name='proceedToRetailCheckout']" to be clickable...
+2025-05-25 13:17:06,445 - INFO - ✅ Clicked on input[name='proceedToRetailCheckout']
+2025-05-25 13:17:06,445 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 13:17:06,445 - INFO - 🏁 Purchase flow completed successfully.
