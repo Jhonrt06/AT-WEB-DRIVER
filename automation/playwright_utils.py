@@ -2,13 +2,14 @@ from config.logs.logger_config import logger
 from functools import wraps
 from playwright.sync_api import TimeoutError
 import unicodedata
-
+from functools import wraps
 
 # Constant for locating all potential clickable HTML elements
 ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 
 
 def log_step(func):
+    @wraps(func)
     def wrapper(self, *args, **kwargs):
         logger.info(f"➡️ Starting: {func.__name__}")
         self.page.wait_for_timeout(
@@ -18,6 +19,20 @@ def log_step(func):
         logger.info(f"✅ Finished: {func.__name__}")
         return result
     return wrapper
+
+def safe_action(default=False):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(self, *args, **kwargs):
+            try:
+                return func(self, *args, **kwargs)
+            except TimeoutError as e:
+                logger.error(f"⏰ Timeout: {func.__name__} - {e}")
+            except Exception as e:
+                logger.exception(f"❌ Unexpected error in {func.__name__}: {e}")
+            return default
+        return wrapper
+    return decorator
 
 class PlaywrightUtils:
     """
@@ -145,6 +160,7 @@ class PlaywrightUtils:
             return False
 
     @log_step
+    @safe_action(default=False)
     def click_hamburger_item_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks an item inside a hamburger menu based on its label text.
@@ -183,10 +199,11 @@ class PlaywrightUtils:
                 return True
             except Exception as error_force:
                 # Log complete failure
-                logger.error(f'❌ Forced click failed for "{label}": {error_force}')
+                logger.exception(f'❌ Forced click failed for "{label}": {error_force}')
                 return False
 
     @log_step
+    @safe_action(default=False)
     def click_text_block_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks any block element (button, div, span, etc.) that contains the specified text.
@@ -214,7 +231,7 @@ class PlaywrightUtils:
 
         except Exception as error:
             # Log error if element was not clickable or found
-            logger.error(
+            logger.exception(
                 f'❌ Failed to click element with label "{label}": {error}'
             )
             return False
@@ -222,7 +239,9 @@ class PlaywrightUtils:
     # --------------------- Product and cart actions ---------------------
 
     @log_step
+    @safe_action(default=False)
     def click_first_product(self) -> bool:
+
         """
         Clicks the first product in a product listing or carousel.
 
@@ -253,9 +272,10 @@ class PlaywrightUtils:
 
         except Exception as error:
             # Log and return failure if any step fails
-            logger.error(f"❌ Failed to click the first product: {error}")
+            logger.exception(f"❌ Failed to click the first product: {error}")
             return False
-
+    
+    @safe_action(default=False)
     def confirm_add_to_cart(self, timeout=5000) -> bool:
         """
         Confirms if an item has been added to the shopping cart.
@@ -332,6 +352,7 @@ class PlaywrightUtils:
             logger.exception(f"❌ Login failed due to an error: {error}")
 
     @log_step
+    @safe_action(default=False)
     def validate_login(self, selector: str) -> bool:
         """
         Validates that login was successful by checking the greeting label.
@@ -360,6 +381,7 @@ class PlaywrightUtils:
 
     # --------------------- Visual Utilities ---------------------
 
+    @safe_action("")
     def get_visible_text(self, selector: str, timeout=5000) -> str:
         """
         Retrieves and normalizes the visible text content of a DOM element.
@@ -393,10 +415,11 @@ class PlaywrightUtils:
 
         except Exception as error:
             # Log warning and return empty string if extraction fails
-            logger.warning(f"Could not retrieve text from {selector}: {error}")
+            logger.exception(f"Could not retrieve text from {selector}: {error}")
             return ""
 
     @log_step
+    @safe_action(default=False)
     def close_warranty_popup(self, timeout=3000) -> bool:
         """
         Attempts to close the warranty offer popup by clicking outside of its bounds.
