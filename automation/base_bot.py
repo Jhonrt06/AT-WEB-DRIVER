@@ -9,7 +9,7 @@ class BaseBot:
     ensuring session isolation and clean automation.
     """
 
-    def __init__(self, headless=True):
+    def __init__(self, headless):
         self.headless = headless
 
     def __enter__(self):

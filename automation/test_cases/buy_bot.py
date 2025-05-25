@@ -11,7 +11,7 @@ class BuyBot:
     Automates the Amazon purchase flow: login, navigation, and product purchase.
     """
 
-    def __init__(self, email: str, password: str):
+    def __init__(self, email: str, password: str, headless: bool, amazon_url: str):
         """
         Initializes the BuyBot with user credentials and settings.
 
@@ -21,7 +21,8 @@ class BuyBot:
         """
         self.email = email
         self.password = password
-        self.settings = Settings()
+        self.headless = headless
+        self.amazon_url = amazon_url
 
     def run_purchase_flow(self) -> None:
         """
@@ -29,12 +30,12 @@ class BuyBot:
         """
         logger.info("🚀 Starting the purchase flow...")
 
-        with BaseBot(headless=False) as bot:
+        with BaseBot(headless=self.headless) as bot:
             page: Page = bot.page
             utils = PlaywrightUtils(page)
 
             logger.info("🌐 Opening Amazon homepage...")
-            utils.open_page(self.settings.amazon_url)
+            utils.open_page(self.amazon_url)
 
             logger.info("🔐 Navigating to login...")
             utils.wait_for_clickable_and_click(
