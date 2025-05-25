@@ -27,10 +27,14 @@ class BaseBot:
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/115.0.0.0 Safari/537.36"
-            )
+            ),
         )
 
-        self.page = self.browser.pages[0] if self.browser.pages else self.browser.new_page()
+        self.page = (
+            self.browser.pages[0]
+            if self.browser.pages
+            else self.browser.new_page()
+        )
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):

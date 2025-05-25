@@ -5,14 +5,19 @@ import unicodedata
 # Constant for locating all potential clickable HTML elements
 ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 
+
 def log_step(func):
     def wrapper(self, *args, **kwargs):
         logger.info(f"➡️ Starting: {func.__name__}")
-        self.page.wait_for_timeout(1000)  # Added delay before executing the function
+        self.page.wait_for_timeout(
+            1000
+        )  # Added delay before executing the function
         result = func(self, *args, **kwargs)
         logger.info(f"✅ Finished: {func.__name__}")
         return result
+
     return wrapper
+
 
 class PlaywrightUtils:
     """
@@ -62,7 +67,9 @@ class PlaywrightUtils:
     # --------------------- Element interaction ---------------------
 
     @log_step
-    def wait_for_clickable_and_click(self, selector: str, timeout=10000) -> None:
+    def wait_for_clickable_and_click(
+        self, selector: str, timeout=10000
+    ) -> None:
         """
         Waits until the specified element is attached, visible, and enabled, then clicks it.
 
@@ -83,7 +90,9 @@ class PlaywrightUtils:
 
             # Scroll the element into view to ensure it is not obstructed
             locator.scroll_into_view_if_needed()
-            self.page.wait_for_timeout(500)  # Small buffer to allow visual stabilization
+            self.page.wait_for_timeout(
+                500
+            )  # Small buffer to allow visual stabilization
 
             # If the element is enabled (interactable), click it
             if locator.is_enabled():
@@ -97,7 +106,9 @@ class PlaywrightUtils:
             logger.error(f"❌ Failed to click '{selector}': {e}")
 
     @log_step
-    def click_by_exact_text(self, css_selector: str, exact_text: str, timeout=5000) -> bool:
+    def click_by_exact_text(
+        self, css_selector: str, exact_text: str, timeout=5000
+    ) -> bool:
         """
         Clicks the first element that matches a CSS selector and exact visible text.
 
@@ -114,7 +125,9 @@ class PlaywrightUtils:
             self.page.wait_for_selector(css_selector, timeout=timeout)
 
             # Filter elements by exact visible text
-            locator = self.page.locator(css_selector).filter(has_text=exact_text)
+            locator = self.page.locator(css_selector).filter(
+                has_text=exact_text
+            )
 
             # Click the first matching element
             locator.first.click()
@@ -125,7 +138,9 @@ class PlaywrightUtils:
 
         except Exception as e:
             # Log and return failure
-            logger.error(f'❌ Could not click element with text "{exact_text}": {e}')
+            logger.error(
+                f'❌ Could not click element with text "{exact_text}": {e}'
+            )
             return False
 
     @log_step
@@ -145,7 +160,9 @@ class PlaywrightUtils:
             self.page.wait_for_selector("#hmenu-content", timeout=timeout)
 
             # Filter all menu items inside the container that match the exact label
-            locator = self.page.locator("#hmenu-content a.hmenu-item").filter(has_text=label)
+            locator = self.page.locator("#hmenu-content a.hmenu-item").filter(
+                has_text=label
+            )
 
             logger.debug(f'🔍 Trying to click "{label}" from hamburger menu...')
 
@@ -156,7 +173,9 @@ class PlaywrightUtils:
 
         except Exception as e:
             # If normal click fails, try using force=True to bypass visual obstructions
-            logger.warning(f'⚠️ Normal click failed for "{label}", retrying with force=True: {e}')
+            logger.warning(
+                f'⚠️ Normal click failed for "{label}", retrying with force=True: {e}'
+            )
             try:
                 locator.first.click(timeout=timeout, force=True)
                 logger.info(f'✅ Forced click succeeded for "{label}"')
@@ -180,7 +199,9 @@ class PlaywrightUtils:
         """
         try:
             # Locate the first matching element among all standard clickable tags
-            locator = self.page.locator(ALL_CLICKABLE_ELEMENTS).filter(has_text=label)
+            locator = self.page.locator(ALL_CLICKABLE_ELEMENTS).filter(
+                has_text=label
+            )
 
             # Scroll the element into view if necessary
             locator.first.scroll_into_view_if_needed()
@@ -192,10 +213,12 @@ class PlaywrightUtils:
 
         except Exception as e:
             # Log error if element was not clickable or found
-            logger.error(f'❌ Failed to click element with label "{label}": {e}')
+            logger.error(
+                f'❌ Failed to click element with label "{label}": {e}'
+            )
             return False
 
-# --------------------- Product and cart actions ---------------------
+    # --------------------- Product and cart actions ---------------------
 
     @log_step
     def click_first_product(self) -> bool:
@@ -214,7 +237,9 @@ class PlaywrightUtils:
             if not first_product.is_visible():
                 self.page.evaluate("window.scrollTo(0, 0)")
                 self.page.wait_for_timeout(500)
-                first_product.evaluate("(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })")
+                first_product.evaluate(
+                    "(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                )
                 self.page.wait_for_timeout(1000)
 
             # Extract product name (first line of text)
@@ -229,7 +254,6 @@ class PlaywrightUtils:
             # Log and return failure if any step fails
             logger.error(f"❌ Failed to click the first product: {e}")
             return False
-
 
     def confirm_add_to_cart(self, timeout=5000) -> bool:
         """
@@ -247,7 +271,9 @@ class PlaywrightUtils:
             if cart_count.is_visible(timeout=timeout):
                 count_text = cart_count.inner_text().strip()
                 if count_text.isdigit() and int(count_text) > 0:
-                    logger.info(f"🛒 Product added to cart. Cart count: {count_text}")
+                    logger.info(
+                        f"🛒 Product added to cart. Cart count: {count_text}"
+                    )
                     return True
 
             # Strategy 2: Check for a confirmation message
@@ -265,10 +291,12 @@ class PlaywrightUtils:
             logger.error(f"❌ Error verifying cart addition: {e}")
             return False
 
-# --------------------- Auth and validation ---------------------
+    # --------------------- Auth and validation ---------------------
 
     @log_step
-    def login(self, email: str, password: str, selectors: dict, timeout=10000) -> None: 
+    def login(
+        self, email: str, password: str, selectors: dict, timeout=10000
+    ) -> None:
         """
         Automates the login process by filling in credentials and submitting the form.
 
@@ -318,7 +346,10 @@ class PlaywrightUtils:
 
         # Check that the label starts with "Hola" and does not include "identifícate"
         # This implies the user is logged in
-        if label.strip().startswith("Hola") and "identifícate" not in label.lower():
+        if (
+            label.strip().startswith("Hola")
+            and "identifícate" not in label.lower()
+        ):
             logger.info(f"✅ Login confirmed. Label now shows: {label}")
             return True
 
@@ -389,7 +420,9 @@ class PlaywrightUtils:
             # Get position and dimensions of the popup
             box = popup.bounding_box()
             if not box:
-                logger.warning("⚠️ Could not retrieve bounding box of warranty popup.")
+                logger.warning(
+                    "⚠️ Could not retrieve bounding box of warranty popup."
+                )
                 return False
 
             # Compute a point outside the popup area

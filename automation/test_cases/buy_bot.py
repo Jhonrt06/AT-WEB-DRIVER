@@ -28,36 +28,39 @@ class BuyBot:
             utils.open_page(self.settings.amazon_url)
 
             logger.info("Clicking on the login button...")
-            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["login_button_home"])
+            utils.wait_for_clickable_and_click(
+                SELECTORS_AMAZON["login_button_home"]
+            )
 
             logger.info("Login")
             utils.login(
-                    email=self.email,
-                    password=self.password,
-                    selectors=SELECTORS_AMAZON,
+                email=self.email,
+                password=self.password,
+                selectors=SELECTORS_AMAZON,
             )
 
             logger.info("Verifying login...")
             # Wait for the page to load and check if the login was successful
             utils.validate_login(
-                    selector=SELECTORS_AMAZON["login_button_home"],
+                selector=SELECTORS_AMAZON["login_button_home"],
             )
 
             logger.info("Verify and Click on the hamburger menu...")
-            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["hamburger_menu"])
+            utils.wait_for_clickable_and_click(
+                SELECTORS_AMAZON["hamburger_menu"]
+            )
             logger.info("Clicking on the Electronics option...")
-            
+
             utils.click_by_exact_text(
-                    css_selector=SELECTORS_AMAZON["hamburger_option_template"],
-                    exact_text="Electrónicos",
+                css_selector=SELECTORS_AMAZON["hamburger_option_template"],
+                exact_text="Electrónicos",
             )
 
             utils.click_hamburger_item_by_label(
-                    label="Televisión y Video",
+                label="Televisión y Video",
             )
 
             utils.click_text_block_by_label(label='DE 48" A 55"')
-
 
             utils.click_first_product()
 
@@ -75,4 +78,6 @@ class BuyBot:
 
             utils.wait_for_clickable_and_click(SELECTORS_AMAZON["buy_now"])
 
-            logger.info("🟢 Flow completed: item added to cart and proceeding to checkout.")
+            logger.info(
+                "🟢 Flow completed: item added to cart and proceeding to checkout."
+            )

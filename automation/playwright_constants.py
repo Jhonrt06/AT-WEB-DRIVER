@@ -9,7 +9,7 @@ SELECTORS_AMAZON = {
     "password": "#ap_password",
     "submit": "#signInSubmit",
     "hamburger_menu": "#nav-hamburger-menu",
-    "hamburger_option_template":"a.hmenu-item",
+    "hamburger_option_template": "a.hmenu-item",
     "hamburger_items_scope": "#hmenu-content a.hmenu-item",
     "add_to_cart": "#add-to-cart-button",
     "nav_cart": "#nav-cart",
