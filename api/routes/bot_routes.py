@@ -29,8 +29,8 @@ def run_bot(request: RunBotRequest):
         )
         bot.run_purchase_flow()
 
-        return RunBotResponse(success=True, message="✅ Purchase flow completed successfully.")
+        return RunBotResponse(success=True, message="Purchase flow completed successfully.")
     
     except Exception as e:
-        traceback.print_exc()  # 👈 imprime todo el error en consola
+        traceback.print_exc()  # imprime todo el error en consola
         raise HTTPException(status_code=500, detail=f"Bot execution failed: {str(e)}")

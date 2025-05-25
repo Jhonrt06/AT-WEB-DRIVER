@@ -48,3 +48,158 @@ Call log:
 2025-05-25 17:37:18,760 - ERROR - ❌ Login failed. Still showing: 
 2025-05-25 17:37:18,760 - INFO - ✅ Finished: validate_login
 2025-05-25 17:37:18,761 - ERROR - Login validation failed. Aborting flow.
+2025-05-25 17:43:35,873 - INFO - 🚀 Starting the purchase flow...
+2025-05-25 17:43:36,536 - INFO - Opening Amazon homepage...
+2025-05-25 17:43:36,536 - INFO - ➡️ Starting: open_page
+2025-05-25 17:43:38,378 - INFO - Navigated to URL: https://www.amazon.com.mx
+2025-05-25 17:43:38,378 - INFO - ✅ Finished: open_page
+2025-05-25 17:43:38,378 - INFO - Navigating to login...
+2025-05-25 17:43:38,379 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:43:39,390 - DEBUG - 🔍 Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-25 17:43:40,189 - INFO - ✅ Clicked on #nav-link-accountList
+2025-05-25 17:43:40,189 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:43:40,189 - INFO - ➡️ Starting: login
+2025-05-25 17:43:41,739 - INFO - 📧 Email entered.
+2025-05-25 17:43:41,739 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:43:42,747 - DEBUG - 🔍 Waiting for element '#continue' to be clickable...
+2025-05-25 17:43:43,702 - INFO - ✅ Clicked on #continue
+2025-05-25 17:43:43,702 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:43:44,460 - INFO - 🔒 Password entered.
+2025-05-25 17:43:44,461 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:43:45,468 - DEBUG - 🔍 Waiting for element '#signInSubmit' to be clickable...
+2025-05-25 17:43:46,041 - INFO - ✅ Clicked on #signInSubmit
+2025-05-25 17:43:46,041 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:43:46,042 - INFO - ✅ Login process completed.
+2025-05-25 17:43:46,042 - INFO - ✅ Finished: login
+2025-05-25 17:43:46,042 - INFO - Verifying successful login...
+2025-05-25 17:43:46,042 - INFO - ➡️ Starting: validate_login
+2025-05-25 17:43:47,078 - INFO - Text found in '#nav-link-accountList': 'Hola projects Cuenta y Listas'
+2025-05-25 17:43:47,079 - INFO - ✅ Login confirmed. Label now shows: Hola projects Cuenta y Listas
+2025-05-25 17:43:47,079 - INFO - ✅ Finished: validate_login
+2025-05-25 17:43:47,079 - INFO - Opening hamburger menu...
+2025-05-25 17:43:47,079 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:43:48,085 - DEBUG - 🔍 Waiting for element '#nav-hamburger-menu' to be clickable...
+2025-05-25 17:43:48,658 - INFO - ✅ Clicked on #nav-hamburger-menu
+2025-05-25 17:43:48,658 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:43:48,658 - INFO - Selecting 'Electrónicos' category...
+2025-05-25 17:43:48,658 - INFO - ➡️ Starting: click_by_exact_text
+2025-05-25 17:43:49,721 - INFO - ✅ Clicked element with exact text: "Electrónicos"
+2025-05-25 17:43:49,721 - INFO - ✅ Finished: click_by_exact_text
+2025-05-25 17:43:49,721 - INFO - Selecting 'Televisión y Video' subcategory...
+2025-05-25 17:43:49,722 - INFO - ➡️ Starting: click_hamburger_item_by_label
+2025-05-25 17:43:55,750 - WARNING - ⚠️ Normal click failed for "Televisión y Video", retrying with force=True: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#hmenu-content a.hmenu-item").filter(has_text="Televisión y Video").first
+    - locator resolved to <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video↵</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video↵</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video↵</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <a class="hmenu-item" href="/gp/browse.html?node=9687925011&ref_=nav_em__tv_and_video_0_2_10_2">Televisión y Video↵</a> from <div data-menu-id="10" data-parent-menu-id="1" class="hmenu hmenu-visible hmenu-translateX">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2025-05-25 17:43:56,490 - INFO - ✅ Forced click succeeded for "Televisión y Video"
+2025-05-25 17:43:56,490 - INFO - ✅ Finished: click_hamburger_item_by_label
+2025-05-25 17:43:56,490 - INFO - Filtering by size 'DE 48" A 55"'...
+2025-05-25 17:43:56,490 - INFO - ➡️ Starting: click_text_block_by_label
+2025-05-25 17:43:57,739 - INFO - ✅ Clicked element with label: "DE 48" A 55""
+2025-05-25 17:43:57,740 - INFO - ✅ Finished: click_text_block_by_label
+2025-05-25 17:43:57,740 - INFO - Clicking the first visible product...
+2025-05-25 17:43:57,740 - INFO - ➡️ Starting: click_first_product
+2025-05-25 17:44:12,699 - ERROR - ❌ Unexpected error in click_first_product: Locator.evaluate: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("li.octopus-pc-item").first
+Traceback (most recent call last):
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\automation\playwright_utils.py", line 28, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\automation\playwright_utils.py", line 238, in click_first_product
+    first_product.evaluate(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\sync_api\_generated.py", line 15705, in evaluate
+    self._sync(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_locator.py", line 188, in evaluate
+    return await self._with_element(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_locator.py", line 112, in _with_element
+    handle = await self.element_handle(timeout=timeout)
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_locator.py", line 315, in element_handle
+    handle = await self._frame.wait_for_selector(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.evaluate: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("li.octopus-pc-item").first
+
+2025-05-25 17:44:12,701 - INFO - ✅ Finished: click_first_product
+2025-05-25 17:44:12,701 - INFO - Adding product to cart...
+2025-05-25 17:44:12,701 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:44:16,233 - INFO - 🚀 Starting the purchase flow...
+2025-05-25 17:44:16,836 - INFO - Opening Amazon homepage...
+2025-05-25 17:44:16,836 - INFO - ➡️ Starting: open_page
+2025-05-25 17:44:18,609 - INFO - Navigated to URL: https://www.amazon.com.mx
+2025-05-25 17:44:18,609 - INFO - ✅ Finished: open_page
+2025-05-25 17:44:18,609 - INFO - Navigating to login...
+2025-05-25 17:44:18,609 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:44:19,613 - DEBUG - 🔍 Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-25 17:44:20,398 - INFO - ✅ Clicked on #nav-link-accountList
+2025-05-25 17:44:20,398 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:44:20,399 - INFO - ➡️ Starting: login
+2025-05-25 17:44:21,950 - INFO - 📧 Email entered.
+2025-05-25 17:44:21,951 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:44:22,965 - DEBUG - 🔍 Waiting for element '#continue' to be clickable...
+2025-05-25 17:44:23,911 - INFO - ✅ Clicked on #continue
+2025-05-25 17:44:23,911 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:44:24,660 - INFO - 🔒 Password entered.
+2025-05-25 17:44:24,660 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:44:25,676 - DEBUG - 🔍 Waiting for element '#signInSubmit' to be clickable...
+2025-05-25 17:44:26,246 - INFO - ✅ Clicked on #signInSubmit
+2025-05-25 17:44:26,246 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:44:26,246 - INFO - ✅ Login process completed.
+2025-05-25 17:44:26,246 - INFO - ✅ Finished: login
+2025-05-25 17:44:26,246 - INFO - Verifying successful login...
+2025-05-25 17:44:26,247 - INFO - ➡️ Starting: validate_login
+2025-05-25 17:44:32,266 - ERROR - Could not retrieve text from #nav-link-accountList: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#nav-link-accountList") to be visible
+Traceback (most recent call last):
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\automation\playwright_utils.py", line 366, in get_visible_text
+    self.page.wait_for_selector(selector, timeout=timeout)
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\sync_api\_generated.py", line 8187, in wait_for_selector
+    self._sync(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_page.py", line 425, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#nav-link-accountList") to be visible
+
+2025-05-25 17:44:32,268 - ERROR - ❌ Login failed. Still showing: 
+2025-05-25 17:44:32,268 - INFO - ✅ Finished: validate_login
+2025-05-25 17:44:32,268 - ERROR - Login validation failed. Aborting flow.
