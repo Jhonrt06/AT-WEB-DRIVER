@@ -1,16 +1,33 @@
 import logging
 import os
+from datetime import datetime
+import shutil
 
-# Ensure the logs directory exists
-os.makedirs("logs", exist_ok=True)
+# Paths
+LOG_DIR = "logs"
+LOG_FILE_NAME = "automation.log"
+LOG_FILE_PATH = os.path.join(LOG_DIR, LOG_FILE_NAME)
 
-# Basic logger configuration
-logging.basicConfig(
-    filename="logs/automation.log",
-    filemode="a",  # Append mode
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-)
+# Create logs directory if it doesn't exist
+os.makedirs(LOG_DIR, exist_ok=True)
 
-# Create a logger object that can be imported in any module
-logger = logging.getLogger("amazon_automation")
+# Backup previous log if it exists
+if os.path.exists(LOG_FILE_PATH):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_path = os.path.join(LOG_DIR, f"automation_{timestamp}.log")
+    shutil.move(LOG_FILE_PATH, backup_path)
+
+# Set up logger
+logger = logging.getLogger("automation_logger")
+logger.setLevel(logging.DEBUG)
+
+# File handler (starts clean each time)
+file_handler = logging.FileHandler(LOG_FILE_PATH, mode="w", encoding="utf-8")
+file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+
+# Avoid duplicate handlers
+if not logger.handlers:
+    logger.addHandler(file_handler)
+
+# Disable propagation to root logger
+logger.propagate = False
