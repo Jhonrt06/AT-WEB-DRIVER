@@ -8,53 +8,16 @@ import unicodedata
 ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 
 
-def retry_on_failure(max_attempts=2, wait_ms=500):
-    """
-    Decorator to retry a method up to `max_attempts` times in case of failure.
-
-    Args:
-        max_attempts (int): Number of retry attempts.
-        wait_ms (int): Wait time between attempts in milliseconds.
-    """
-
-    def decorator(func):
-        @wraps(func)
-        def wrapper(self, *args, **kwargs):
-            # Log the start of the decorated method
-            logger.info(f"➡️ Starting: {func.__name__} method...")
-            attempt = 1
-
-            # Retry loop: tries up to `max_attempts` times
-            while attempt <= max_attempts:
-                try:
-                    # Try executing the method
-                    result = func(self, *args, **kwargs)
-                    return result  # Return if successful
-                except Exception as error:
-                    # Log the failure for this attempt
-                    logger.warning(
-                        f"⚠️ Attempt {attempt} failed in {func.__name__}: {error}"
-                    )
-
-                    # If it's the final attempt, log an error and return fallback
-                    if attempt == max_attempts:
-                        logger.error(
-                            f"❌ {func.__name__} failed after {max_attempts} attempts."
-                        )
-
-                        # Return `False` if the method name starts with 'click', else `None`
-                        return (
-                            False if func.__name__.startswith("click") else None
-                        )
-
-                    # Wait before retrying
-                    self.page.wait_for_timeout(wait_ms)
-                    attempt += 1
-
-        return wrapper
-
-    return decorator
-
+def log_step(func):
+    def wrapper(self, *args, **kwargs):
+        logger.info(f"➡️ Starting: {func.__name__}")
+        self.page.wait_for_timeout(
+            1000
+        )  # Added delay before executing the function
+        result = func(self, *args, **kwargs)
+        logger.info(f"✅ Finished: {func.__name__}")
+        return result
+    return wrapper
 
 class PlaywrightUtils:
     """
@@ -81,7 +44,7 @@ class PlaywrightUtils:
 
     # --------------------- Navigation ---------------------
 
-    @retry_on_failure()
+    @log_step
     def open_page(self, url) -> None:
         """
         Navigates the browser to the specified URL.
@@ -103,7 +66,7 @@ class PlaywrightUtils:
 
     # --------------------- Element interaction ---------------------
 
-    @retry_on_failure()
+    @log_step
     def wait_for_clickable_and_click(
         self, selector: str, timeout=10000
     ) -> None:
@@ -137,12 +100,13 @@ class PlaywrightUtils:
                 logger.info(f"✅ Clicked on {selector}")
             else:
                 logger.warning(f"⚠️ {selector} is visible but not enabled.")
+                raise RuntimeError(f"Element {selector} is not enabled for clicking.")
 
         except Exception as error:
             # Log any errors encountered while trying to interact with the element
             logger.error(f"❌ Failed to click '{selector}': {error}")
 
-    @retry_on_failure()
+    @log_step
     def click_by_exact_text(
         self, css_selector: str, exact_text: str, timeout=5000
     ) -> bool:
@@ -180,7 +144,7 @@ class PlaywrightUtils:
             )
             return False
 
-    @retry_on_failure()
+    @log_step
     def click_hamburger_item_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks an item inside a hamburger menu based on its label text.
@@ -222,7 +186,7 @@ class PlaywrightUtils:
                 logger.error(f'❌ Forced click failed for "{label}": {error_force}')
                 return False
 
-    @retry_on_failure()
+    @log_step
     def click_text_block_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks any block element (button, div, span, etc.) that contains the specified text.
@@ -257,7 +221,7 @@ class PlaywrightUtils:
 
     # --------------------- Product and cart actions ---------------------
 
-    @retry_on_failure()
+    @log_step
     def click_first_product(self) -> bool:
         """
         Clicks the first product in a product listing or carousel.
@@ -330,7 +294,7 @@ class PlaywrightUtils:
 
     # --------------------- Auth and validation ---------------------
 
-    @retry_on_failure()
+    @log_step
     def login(
         self, email: str, password: str, selectors: dict, timeout=10000
     ) -> None:
@@ -367,7 +331,7 @@ class PlaywrightUtils:
             # Log and raise any error that prevents login completion
             logger.exception(f"❌ Login failed due to an error: {error}")
 
-    @retry_on_failure()
+    @log_step
     def validate_login(self, selector: str) -> bool:
         """
         Validates that login was successful by checking the greeting label.
@@ -432,7 +396,7 @@ class PlaywrightUtils:
             logger.warning(f"Could not retrieve text from {selector}: {error}")
             return ""
 
-    @retry_on_failure()
+    @log_step
     def close_warranty_popup(self, timeout=3000) -> bool:
         """
         Attempts to close the warranty offer popup by clicking outside of its bounds.
