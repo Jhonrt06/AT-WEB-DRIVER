@@ -5,6 +5,15 @@ import unicodedata
 # Constant for locating all potential clickable HTML elements
 ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 
+def log_step(func):
+    def wrapper(self, *args, **kwargs):
+        logger.info(f"➡️ Starting: {func.__name__}")
+        self.page.wait_for_timeout(1000)  # Added delay before executing the function
+        result = func(self, *args, **kwargs)
+        logger.info(f"✅ Finished: {func.__name__}")
+        return result
+    return wrapper
+
 class PlaywrightUtils:
     """
     A utility class to encapsulate common web interaction operations using Playwright.
@@ -30,7 +39,8 @@ class PlaywrightUtils:
 
     # --------------------- Navigation ---------------------
 
-    def open_page(self, url):
+    @log_step
+    def open_page(self, url) -> None:
         """
         Navigates the browser to the specified URL.
 
@@ -51,7 +61,8 @@ class PlaywrightUtils:
 
     # --------------------- Element interaction ---------------------
 
-    def wait_for_clickable_and_click(self, selector: str, timeout=10000):
+    @log_step
+    def wait_for_clickable_and_click(self, selector: str, timeout=10000) -> None:
         """
         Waits until the specified element is attached, visible, and enabled, then clicks it.
 
@@ -85,6 +96,7 @@ class PlaywrightUtils:
             # Log any errors encountered while trying to interact with the element
             logger.error(f"❌ Failed to click '{selector}': {e}")
 
+    @log_step
     def click_by_exact_text(self, css_selector: str, exact_text: str, timeout=5000) -> bool:
         """
         Clicks the first element that matches a CSS selector and exact visible text.
@@ -116,7 +128,7 @@ class PlaywrightUtils:
             logger.error(f'❌ Could not click element with text "{exact_text}": {e}')
             return False
 
-
+    @log_step
     def click_hamburger_item_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks an item inside a hamburger menu based on its label text.
@@ -154,7 +166,7 @@ class PlaywrightUtils:
                 logger.error(f'❌ Forced click failed for "{label}": {e_force}')
                 return False
 
-
+    @log_step
     def click_text_block_by_label(self, label: str, timeout=5000) -> bool:
         """
         Clicks any block element (button, div, span, etc.) that contains the specified text.
@@ -185,6 +197,7 @@ class PlaywrightUtils:
 
 # --------------------- Product and cart actions ---------------------
 
+    @log_step
     def click_first_product(self) -> bool:
         """
         Clicks the first product in a product listing or carousel.
@@ -254,7 +267,8 @@ class PlaywrightUtils:
 
 # --------------------- Auth and validation ---------------------
 
-    def login(self, email: str, password: str, selectors: dict, timeout=10000):
+    @log_step
+    def login(self, email: str, password: str, selectors: dict, timeout=10000) -> None: 
         """
         Automates the login process by filling in credentials and submitting the form.
 
@@ -288,7 +302,7 @@ class PlaywrightUtils:
             # Log and raise any error that prevents login completion
             logger.exception(f"❌ Login failed due to an error: {e}")
 
-
+    @log_step
     def validate_login(self, selector: str) -> bool:
         """
         Validates that login was successful by checking the greeting label.
@@ -350,6 +364,7 @@ class PlaywrightUtils:
             logger.warning(f"Could not retrieve text from {selector}: {e}")
             return ""
 
+    @log_step
     def close_warranty_popup(self, timeout=3000) -> bool:
         """
         Attempts to close the warranty offer popup by clicking outside of its bounds.
