@@ -1,4 +1,4 @@
-from automation.test_cases.comprar_bot import BuyBot
+from automation.test_cases.buy_bot import BuyBot
 from config.logs.logger_config import logger
 
 if __name__ == "__main__":
