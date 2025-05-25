@@ -1,0 +1,50 @@
+2025-05-25 17:37:02,526 - INFO - 🚀 Starting the purchase flow...
+2025-05-25 17:37:03,157 - INFO - Opening Amazon homepage...
+2025-05-25 17:37:03,157 - INFO - ➡️ Starting: open_page
+2025-05-25 17:37:05,020 - INFO - Navigated to URL: https://www.amazon.com.mx
+2025-05-25 17:37:05,021 - INFO - ✅ Finished: open_page
+2025-05-25 17:37:05,021 - INFO - Navigating to login...
+2025-05-25 17:37:05,021 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:37:06,027 - DEBUG - 🔍 Waiting for element '#nav-link-accountList' to be clickable...
+2025-05-25 17:37:06,830 - INFO - ✅ Clicked on #nav-link-accountList
+2025-05-25 17:37:06,830 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:37:06,830 - INFO - ➡️ Starting: login
+2025-05-25 17:37:08,373 - INFO - 📧 Email entered.
+2025-05-25 17:37:08,373 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:37:09,386 - DEBUG - 🔍 Waiting for element '#continue' to be clickable...
+2025-05-25 17:37:10,340 - INFO - ✅ Clicked on #continue
+2025-05-25 17:37:10,340 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:37:11,132 - INFO - 🔒 Password entered.
+2025-05-25 17:37:11,132 - INFO - ➡️ Starting: wait_for_clickable_and_click
+2025-05-25 17:37:12,146 - DEBUG - 🔍 Waiting for element '#signInSubmit' to be clickable...
+2025-05-25 17:37:12,726 - INFO - ✅ Clicked on #signInSubmit
+2025-05-25 17:37:12,726 - INFO - ✅ Finished: wait_for_clickable_and_click
+2025-05-25 17:37:12,726 - INFO - ✅ Login process completed.
+2025-05-25 17:37:12,726 - INFO - ✅ Finished: login
+2025-05-25 17:37:12,727 - INFO - Verifying successful login...
+2025-05-25 17:37:12,727 - INFO - ➡️ Starting: validate_login
+2025-05-25 17:37:18,759 - ERROR - Could not retrieve text from #nav-link-accountList: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#nav-link-accountList") to be visible
+Traceback (most recent call last):
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\automation\playwright_utils.py", line 366, in get_visible_text
+    self.page.wait_for_selector(selector, timeout=timeout)
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\sync_api\_generated.py", line 8187, in wait_for_selector
+    self._sync(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_page.py", line 425, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+  File "C:\Users\Jhon Rodriguez\Documents\Repos\AT-WEB-DRIVER\venv310\lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("#nav-link-accountList") to be visible
+
+2025-05-25 17:37:18,760 - ERROR - ❌ Login failed. Still showing: 
+2025-05-25 17:37:18,760 - INFO - ✅ Finished: validate_login
+2025-05-25 17:37:18,761 - ERROR - Login validation failed. Aborting flow.

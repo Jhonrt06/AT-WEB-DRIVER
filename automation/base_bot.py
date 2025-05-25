@@ -21,13 +21,16 @@ class BaseBot:
         # Launch browser with persistent context (clean session)
         self.browser = self.p.chromium.launch_persistent_context(
             user_data_dir=self.temp_profile,
-            headless=False,
+            headless=self.headless,
             viewport={"width": 1280, "height": 800},
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/115.0.0.0 Safari/537.36"
             ),
+            extra_http_headers={
+                "Accept-Language": "es-MX,es;q=0.9",
+            }
         )
 
         self.page = (

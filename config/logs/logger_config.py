@@ -21,13 +21,20 @@ if os.path.exists(LOG_FILE_PATH):
 logger = logging.getLogger("automation_logger")
 logger.setLevel(logging.DEBUG)
 
-# File handler (starts clean each time)
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+
+# File handler
 file_handler = logging.FileHandler(LOG_FILE_PATH, mode="w", encoding="utf-8")
-file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+file_handler.setFormatter(formatter)
+
+# Console handler
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
 
 # Avoid duplicate handlers
 if not logger.handlers:
     logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
 
-# Disable propagation to root logger
+# Prevent logs from propagating to the root logger
 logger.propagate = False

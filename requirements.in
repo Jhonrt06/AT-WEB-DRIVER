@@ -1,5 +1,25 @@
-playwright
-python-dotenv
+# requirements.in
+# ───────────────────────────────────────────────────────────────
+# This file defines the top-level dependencies explicitly used
+# in the project.
+#
+# It is intended to be compiled into a fully resolved
+# requirements.txt file using pip-tools.
+#
+# To generate requirements.txt, run:
+#     pip-compile requirements.in
+#
+# To install all dependencies, run:
+#     pip install -r requirements.txt
+#
+# Do not include transitive dependencies here (e.g., h11, anyio).
+# These will be resolved automatically when compiling.
+# ───────────────────────────────────────────────────────────────
+
 fastapi
 uvicorn
+playwright
+pydantic-settings
+python-dotenv
 opencv-python
+numpy

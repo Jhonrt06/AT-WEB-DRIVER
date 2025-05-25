@@ -11,12 +11,12 @@ ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 def log_step(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        logger.info(f"➡️ Starting: {func.__name__}")
+        logger.info(f"Starting: {func.__name__}")
         self.page.wait_for_timeout(
             1000
         )  # Added delay before executing the function
         result = func(self, *args, **kwargs)
-        logger.info(f"✅ Finished: {func.__name__}")
+        logger.info(f"Finished: {func.__name__}")
         return result
     return wrapper
 
@@ -27,9 +27,9 @@ def safe_action(default=False):
             try:
                 return func(self, *args, **kwargs)
             except TimeoutError as e:
-                logger.error(f"⏰ Timeout: {func.__name__} - {e}")
+                logger.error(f"Timeout: {func.__name__} - {e}")
             except Exception as e:
-                logger.exception(f"❌ Unexpected error in {func.__name__}: {e}")
+                logger.exception(f"Unexpected error in {func.__name__}: {e}")
             return default
         return wrapper
     return decorator
@@ -93,7 +93,7 @@ class PlaywrightUtils:
             timeout (int): Time to wait before timeout (milliseconds).
         """
 
-        logger.debug(f"🔍 Waiting for element {selector!r} to be clickable...")
+        logger.debug(f"Waiting for element {selector!r} to be clickable...")
 
         try:
             # Create a locator for the target element
@@ -112,14 +112,14 @@ class PlaywrightUtils:
             # If the element is enabled (interactable), click it
             if locator.is_enabled():
                 locator.click()
-                logger.info(f"✅ Clicked on {selector}")
+                logger.info(f"Clicked on {selector}")
             else:
-                logger.warning(f"⚠️ {selector} is visible but not enabled.")
+                logger.warning(f"{selector} is visible but not enabled.")
                 raise RuntimeError(f"Element {selector} is not enabled for clicking.")
 
         except Exception as error:
             # Log any errors encountered while trying to interact with the element
-            logger.error(f"❌ Failed to click '{selector}': {error}")
+            logger.error(f"Failed to click '{selector}': {error}")
 
     @log_step
     @safe_action(default=False)
@@ -150,7 +150,7 @@ class PlaywrightUtils:
         locator.first.click()
 
         # Log success
-        logger.info(f'✅ Clicked element with exact text: "{exact_text}"')
+        logger.info(f'Clicked element with exact text: "{exact_text}"')
         return True
 
 
@@ -182,10 +182,10 @@ class PlaywrightUtils:
         except Exception as error:
             # If normal click fails, try using force=True to bypass visual obstructions
             logger.warning(
-                f'⚠️ Normal click failed for "{label}", retrying with force=True: {error}'
+                f'Normal click failed for "{label}", retrying with force=True: {error}'
             )
             locator.first.click(timeout=timeout, force=True)
-            logger.info(f'✅ Forced click succeeded for "{label}"')
+            logger.info(f'Forced click succeeded for "{label}"')
 
     @log_step
     @safe_action(default=False)
@@ -211,7 +211,7 @@ class PlaywrightUtils:
 
         # Attempt to click the element
         locator.first.click()
-        logger.info(f'✅ Clicked element with label: "{label}"')
+        logger.info(f'Clicked element with label: "{label}"')
         return True
 
     # --------------------- Product and cart actions ---------------------
@@ -245,7 +245,7 @@ class PlaywrightUtils:
 
         # Click the product
         first_product.click()
-        logger.info(f'✅ Clicked first product: "{product_text}"')
+        logger.info(f'Clicked first product: "{product_text}"')
         return True
 
     @safe_action(default=False)
@@ -273,11 +273,11 @@ class PlaywrightUtils:
         # Strategy 2: Check for a confirmation message
         success_msg = self.page.locator('text="Agregado al carrito"')
         if success_msg.is_visible(timeout=timeout):
-            logger.info("✅ Product added to cart - success message found.")
+            logger.info("Product added to cart - success message found.")
             return True
 
         # Neither method confirmed the product was added
-        logger.warning("⚠️ Could not confirm product was added to cart.")
+        logger.warning("Could not confirm product was added to cart.")
         return False
 
  # --------------------- Auth and validation ---------------------
@@ -309,15 +309,15 @@ class PlaywrightUtils:
             self.page.wait_for_selector(selectors["password"], timeout=timeout)
             self.page.wait_for_timeout(500)
             self.page.fill(selectors["password"], password)
-            logger.info("🔒 Password entered.")
+            logger.info("Password entered.")
 
             # Click the "Submit" button to complete login
             self.wait_for_clickable_and_click(selectors["submit"], timeout)
-            logger.info("✅ Login process completed.")
+            logger.info("Login process completed.")
 
         except Exception as error:
             # Log and raise any error that prevents login completion
-            logger.exception(f"❌ Login failed due to an error: {error}")
+            logger.exception(f"Login failed due to an error: {error}")
 
     @log_step
     @safe_action(default=False)
@@ -340,11 +340,11 @@ class PlaywrightUtils:
             label.strip().startswith("Hola")
             and "identifícate" not in label.lower()
         ):
-            logger.info(f"✅ Login confirmed. Label now shows: {label}")
+            logger.info(f"Login confirmed. Label now shows: {label}")
             return True
 
         # If conditions aren't met, assume login failed
-        logger.error(f"❌ Login failed. Still showing: {label}")
+        logger.error(f"Login failed. Still showing: {label}")
         return False
 
     # --------------------- Visual Utilities ---------------------
@@ -406,14 +406,14 @@ class PlaywrightUtils:
 
         # If popup is not visible, nothing to close
         if not popup.is_visible(timeout=timeout):
-            logger.info("✅ Warranty popup not visible.")
+            logger.info("Warranty popup not visible.")
             return False
 
         # Get position and dimensions of the popup
         box = popup.bounding_box()
         if not box:
             logger.warning(
-                "⚠️ Could not retrieve bounding box of warranty popup."
+                "Could not retrieve bounding box of warranty popup."
             )
             return False
 
@@ -424,5 +424,5 @@ class PlaywrightUtils:
         # Simulate a mouse click outside the popup to dismiss it
         self.page.mouse.click(x, y)
         self.page.wait_for_timeout(800)
-        logger.info(f"🖱️ Clicked outside warranty popup at ({x}, {y})")
+        logger.info(f"Clicked outside warranty popup at ({x}, {y})")
         return True
