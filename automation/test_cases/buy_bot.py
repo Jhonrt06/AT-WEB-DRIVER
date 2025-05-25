@@ -1,7 +1,7 @@
 from automation.base_bot import BaseBot
 from automation.playwright_utils import PlaywrightUtils
-from config.settings import Settings
 from automation.playwright_constants import SELECTORS_AMAZON
+from config.settings import Settings
 from config.logs.logger_config import logger
 from playwright.sync_api import *
 

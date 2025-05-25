@@ -1,5 +1,5 @@
-from playwright.sync_api import TimeoutError
 from config.logs.logger_config import logger
+from playwright.sync_api import TimeoutError
 import unicodedata
 
 # Constant for locating all potential clickable HTML elements
