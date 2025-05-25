@@ -37,7 +37,9 @@ class BuyBot:
             utils.open_page(self.settings.amazon_url)
 
             logger.info("🔐 Navigating to login...")
-            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["login_button_home"])
+            utils.wait_for_clickable_and_click(
+                SELECTORS_AMAZON["login_button_home"]
+            )
             utils.login(
                 email=self.email,
                 password=self.password,
@@ -45,13 +47,17 @@ class BuyBot:
             )
 
             logger.info("🔍 Verifying successful login...")
-            login_success = utils.validate_login(SELECTORS_AMAZON["login_button_home"])
+            login_success = utils.validate_login(
+                SELECTORS_AMAZON["login_button_home"]
+            )
             if not login_success:
                 logger.error("❌ Login validation failed. Aborting flow.")
                 return
 
             logger.info("📂 Opening hamburger menu...")
-            utils.wait_for_clickable_and_click(SELECTORS_AMAZON["hamburger_menu"])
+            utils.wait_for_clickable_and_click(
+                SELECTORS_AMAZON["hamburger_menu"]
+            )
 
             logger.info("📁 Selecting 'Electrónicos' category...")
             utils.click_by_exact_text(
