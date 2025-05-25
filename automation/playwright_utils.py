@@ -21,7 +21,7 @@ def retry_on_failure(max_attempts=2, wait_ms=500):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
             # Log the start of the decorated method
-            logger.info(f"➡️ Starting: {func.__name__}")
+            logger.info(f"➡️ Starting: {func.__name__} method...")
             attempt = 1
 
             # Retry loop: tries up to `max_attempts` times
@@ -30,10 +30,10 @@ def retry_on_failure(max_attempts=2, wait_ms=500):
                     # Try executing the method
                     result = func(self, *args, **kwargs)
                     return result  # Return if successful
-                except Exception as e:
+                except Exception as error:
                     # Log the failure for this attempt
                     logger.warning(
-                        f"⚠️ Attempt {attempt} failed in {func.__name__}: {e}"
+                        f"⚠️ Attempt {attempt} failed in {func.__name__}: {error}"
                     )
 
                     # If it's the final attempt, log an error and return fallback
@@ -138,9 +138,9 @@ class PlaywrightUtils:
             else:
                 logger.warning(f"⚠️ {selector} is visible but not enabled.")
 
-        except Exception as e:
+        except Exception as error:
             # Log any errors encountered while trying to interact with the element
-            logger.error(f"❌ Failed to click '{selector}': {e}")
+            logger.error(f"❌ Failed to click '{selector}': {error}")
 
     @retry_on_failure()
     def click_by_exact_text(
@@ -173,10 +173,10 @@ class PlaywrightUtils:
             logger.info(f'✅ Clicked element with exact text: "{exact_text}"')
             return True
 
-        except Exception as e:
+        except Exception as error:
             # Log and return failure
             logger.error(
-                f'❌ Could not click element with text "{exact_text}": {e}'
+                f'❌ Could not click element with text "{exact_text}": {error}'
             )
             return False
 
@@ -208,18 +208,18 @@ class PlaywrightUtils:
             logger.info(f'✅ Clicked menu item: "{label}"')
             return True
 
-        except Exception as e:
+        except Exception as error:
             # If normal click fails, try using force=True to bypass visual obstructions
             logger.warning(
-                f'⚠️ Normal click failed for "{label}", retrying with force=True: {e}'
+                f'⚠️ Normal click failed for "{label}", retrying with force=True: {error}'
             )
             try:
                 locator.first.click(timeout=timeout, force=True)
                 logger.info(f'✅ Forced click succeeded for "{label}"')
                 return True
-            except Exception as e_force:
+            except Exception as error_force:
                 # Log complete failure
-                logger.error(f'❌ Forced click failed for "{label}": {e_force}')
+                logger.error(f'❌ Forced click failed for "{label}": {error_force}')
                 return False
 
     @retry_on_failure()
@@ -248,10 +248,10 @@ class PlaywrightUtils:
             logger.info(f'✅ Clicked element with label: "{label}"')
             return True
 
-        except Exception as e:
+        except Exception as error:
             # Log error if element was not clickable or found
             logger.error(
-                f'❌ Failed to click element with label "{label}": {e}'
+                f'❌ Failed to click element with label "{label}": {error}'
             )
             return False
 
@@ -287,9 +287,9 @@ class PlaywrightUtils:
             logger.info(f'✅ Clicked first product: "{product_text}"')
             return True
 
-        except Exception as e:
+        except Exception as error:
             # Log and return failure if any step fails
-            logger.error(f"❌ Failed to click the first product: {e}")
+            logger.error(f"❌ Failed to click the first product: {error}")
             return False
 
     def confirm_add_to_cart(self, timeout=5000) -> bool:
@@ -323,9 +323,9 @@ class PlaywrightUtils:
             logger.warning("⚠️ Could not confirm product was added to cart.")
             return False
 
-        except Exception as e:
+        except Exception as error:
             # Log any errors during verification
-            logger.error(f"❌ Error verifying cart addition: {e}")
+            logger.error(f"❌ Error verifying cart addition: {error}")
             return False
 
     # --------------------- Auth and validation ---------------------
@@ -363,9 +363,9 @@ class PlaywrightUtils:
             self.wait_for_clickable_and_click(selectors["submit"], timeout)
             logger.info("✅ Login process completed.")
 
-        except Exception as e:
+        except Exception as error:
             # Log and raise any error that prevents login completion
-            logger.exception(f"❌ Login failed due to an error: {e}")
+            logger.exception(f"❌ Login failed due to an error: {error}")
 
     @retry_on_failure()
     def validate_login(self, selector: str) -> bool:
@@ -427,9 +427,9 @@ class PlaywrightUtils:
             logger.info(f"Text found in {selector!r}: {normalized_text!r}")
             return normalized_text
 
-        except Exception as e:
+        except Exception as error:
             # Log warning and return empty string if extraction fails
-            logger.warning(f"Could not retrieve text from {selector}: {e}")
+            logger.warning(f"Could not retrieve text from {selector}: {error}")
             return ""
 
     @retry_on_failure()
@@ -472,7 +472,7 @@ class PlaywrightUtils:
             logger.info(f"🖱️ Clicked outside warranty popup at ({x}, {y})")
             return True
 
-        except Exception as e:
+        except Exception as error:
             # Log failure if unable to close popup
-            logger.error(f"❌ Failed to close warranty popup: {e}")
+            logger.error(f"❌ Failed to close warranty popup: {error}")
             return False
