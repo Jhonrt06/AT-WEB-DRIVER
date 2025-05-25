@@ -2,28 +2,42 @@ from playwright.sync_api import TimeoutError
 from config.logs.logger_config import logger
 import unicodedata
 
-# Constants
+# Constant for locating all potential clickable HTML elements
 ALL_CLICKABLE_ELEMENTS = "button, a, span, div"
 
 class PlaywrightUtils:
     """
-    PlaywrightUtils class
-    Contains reusable methods for interacting with web pages using Playwright.
+    A utility class to encapsulate common web interaction operations using Playwright.
 
-    Typical usage:
+    Attributes:
+        page: A Playwright page object for performing browser interactions.
+
+    Example:
         utils = PlaywrightUtils(page)
-        utils.fill_input("#field", "text")
-        utils.wait_for_clickable_and_click("#button")
+        utils.open_page("https://example.com")
+        utils.fill_input("#username", "admin")
+        utils.wait_for_clickable_and_click("#submit")
     """
 
     def __init__(self, page):
-        """Initializes the PlaywrightUtils class with the given Playwright page object."""
+        """
+        Initializes the PlaywrightUtils class.
+
+        Args:
+            page: The Playwright page object to use for interactions.
+        """
         self.page = page
 
     # --------------------- Navigation ---------------------
 
     def open_page(self, url):
-        """Navigates to the given URL using the Playwright page instance and logs the action."""
+        """
+        Navigates the browser to the specified URL.
+
+        Args:
+            url (str): The web address to open.
+        """
+
         try:
             self.page.goto(url)
             logger.info(f"Navigated to URL: {url}")
@@ -34,7 +48,14 @@ class PlaywrightUtils:
     # --------------------- Element interaction ---------------------
 
     def wait_for_clickable_and_click(self, selector: str, timeout=10000):
-        """Waits until the element is attached and visible, then clicks it if enabled."""
+        """
+        Waits until the specified element is attached, visible, and enabled, then clicks it.
+
+        Args:
+            selector (str): CSS selector of the element to click.
+            timeout (int): Time to wait before timeout (milliseconds).
+        """
+
         logger.info(f"🔍 Waiting for element {selector!r} to be clickable...")
         try:
             locator = self.page.locator(selector)
@@ -52,7 +73,18 @@ class PlaywrightUtils:
             logger.error(f"❌ Failed to click '{selector}': {e}")
 
     def click_by_exact_text(self, css_selector: str, exact_text: str, timeout=5000) -> bool:
-        """Clicks the first element that matches the given CSS selector and exact visible text."""
+        """
+        Clicks the first element that matches a CSS selector and exact visible text.
+
+        Args:
+            css_selector (str): CSS selector for locating the elements.
+            exact_text (str): Exact text the element must contain.
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            bool: True if the click was successful, False otherwise.
+        """
+
         try:
             self.page.wait_for_selector(css_selector, timeout=timeout)
             locator = self.page.locator(css_selector).filter(has_text=exact_text)
@@ -64,7 +96,17 @@ class PlaywrightUtils:
             return False
 
     def click_hamburger_item_by_label(self, label: str, timeout=5000) -> bool:
-        """Clicks an item in the hamburger menu based on the exact label provided."""
+        """
+        Clicks an item inside a hamburger menu based on its label text.
+
+        Args:
+            label (str): Text label of the menu item.
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            bool: True if the click was successful, False otherwise.
+        """
+
         try:
             self.page.wait_for_selector("#hmenu-content", timeout=timeout)
             locator = self.page.locator("#hmenu-content a.hmenu-item").filter(has_text=label)
@@ -82,8 +124,18 @@ class PlaywrightUtils:
                 logger.error(f'❌ Forced click failed for "{label}": {e_force}')
                 return False
 
-    def click_text_block_by_label(self, label: str, timeout=5000):
-        """Scrolls into view and clicks an element containing the specified text label."""
+    def click_text_block_by_label(self, label: str, timeout=5000) -> bool:
+        """
+        Clicks any block element (button, div, span, etc.) that contains the specified text.
+
+        Args:
+            label (str): Text to match inside the element.
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            bool: True if the click was successful, False otherwise.
+        """
+
         try:
             locator = self.page.locator(ALL_CLICKABLE_ELEMENTS).filter(has_text=label)
             locator.first.scroll_into_view_if_needed()
@@ -97,7 +149,13 @@ class PlaywrightUtils:
     # --------------------- Product and cart actions ---------------------
 
     def click_first_product(self) -> bool:
-        """Clicks the first visible product item from a carousel or listing on the page."""
+        """
+        Clicks the first product in a product listing or carousel.
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+
         try:
             selector = "li.octopus-pc-item"
             first_product = self.page.locator(selector).first
@@ -118,7 +176,16 @@ class PlaywrightUtils:
             return False
 
     def confirm_add_to_cart(self, timeout=5000) -> bool:
-        """Verifies that a product was added to the cart by checking UI indicators."""
+        """
+        Confirms if an item has been added to the shopping cart.
+
+        Args:
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            bool: True if the cart contains items, False otherwise.
+        """
+
         try:
             cart_count = self.page.locator("#nav-cart-count")
             if cart_count.is_visible(timeout=timeout):
@@ -142,7 +209,16 @@ class PlaywrightUtils:
     # --------------------- Auth and validation ---------------------
 
     def login(self, email: str, password: str, selectors: dict, timeout=10000):
-        """Performs a login operation using the given credentials and selectors."""
+        """
+        Automates the login process by filling in credentials and submitting the form.
+
+        Args:
+            email (str): User email.
+            password (str): User password.
+            selectors (dict): Dictionary of field selectors (email, password, continue, submit).
+            timeout (int): Timeout in milliseconds.
+        """
+
         try:
             self.page.wait_for_selector(selectors["email"], timeout=timeout)
             self.page.wait_for_timeout(500)
@@ -163,7 +239,16 @@ class PlaywrightUtils:
             logger.exception(f"❌ Login failed due to an error: {e}")
 
     def validate_login(self, selector: str) -> bool:
-        """Checks if the login was successful by analyzing the greeting label content."""
+        """
+        Validates that login was successful by checking the greeting label.
+
+        Args:
+            selector (str): Selector for the greeting label.
+
+        Returns:
+            bool: True if login is confirmed, False otherwise.
+        """
+
         label = self.get_visible_text(selector=selector)
         if label.strip().startswith("Hola") and "identifícate" not in label.lower():
             logger.info(f"✅ Login confirmed. Label now shows: {label}")
@@ -175,7 +260,17 @@ class PlaywrightUtils:
     # --------------------- Visual Utilities ---------------------
 
     def get_visible_text(self, selector: str, timeout=5000) -> str:
-        """Retrieves and normalizes the visible text content of a web element."""
+        """
+        Retrieves and normalizes the visible text content of a DOM element.
+
+        Args:
+            selector (str): CSS selector of the target element.
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            str: Cleaned and normalized visible text, or empty string if failed.
+        """
+
         try:
             self.page.wait_for_selector(selector, timeout=timeout)
             element = self.page.locator(selector)
@@ -188,8 +283,16 @@ class PlaywrightUtils:
             logger.warning(f"Could not retrieve text from {selector}: {e}")
             return ""
 
-    def close_warranty_popup(self, timeout=3000):
-        """Attempts to close the warranty upsell popup by clicking outside its bounds."""
+    def close_warranty_popup(self, timeout=3000) -> bool:
+        """
+        Attempts to close the warranty offer popup by clicking outside of its bounds.
+
+        Args:
+            timeout (int): Timeout in milliseconds.
+
+        Returns:
+            bool: True if the popup was closed, False otherwise.
+        """
         popup_selector = "#attach-warranty-pane"
         try:
             popup = self.page.locator(popup_selector)
