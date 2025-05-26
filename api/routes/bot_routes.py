@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from automation.test_cases.buy_bot import BuyBot
 from config.settings import Settings
-import traceback  # 👈 necesario para imprimir el error completo
+import traceback  
 
 router = APIRouter()
 
