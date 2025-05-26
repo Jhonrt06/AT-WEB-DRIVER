@@ -266,7 +266,7 @@ class PlaywrightUtils:
             count_text = cart_count.inner_text().strip()
             if count_text.isdigit() and int(count_text) > 0:
                 logger.info(
-                    f"🛒 Product added to cart. Cart count: {count_text}"
+                    f"Product added to cart. Cart count: {count_text}"
                 )
                 return True
 
@@ -300,7 +300,7 @@ class PlaywrightUtils:
             self.page.wait_for_selector(selectors["email"], timeout=timeout)
             self.page.wait_for_timeout(500)
             self.page.fill(selectors["email"], email)
-            logger.info("📧 Email entered.")
+            logger.info("Email entered.")
 
             # Click the "Continue" button
             self.wait_for_clickable_and_click(selectors["continue"], timeout)
