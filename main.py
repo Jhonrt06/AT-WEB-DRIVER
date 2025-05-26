@@ -20,7 +20,3 @@ app.include_router(bot_router, prefix="/api", tags=["Bot Automation"])
 # Optional: for development use only (use `uvicorn main:app` instead in prod)
 if __name__ == "__main__":
     uvicorn.run("main:app", host=settings.api_host, port=settings.api_port, reload=True)
-
-    # settings.headless = False  # Set headless to False for debugging
-    # bot = BuyBot(email="project.otua1@gmail.com", password="esunaprueba", headless=False, url=settings.amazon_url)
-    # bot.run_purchase_flow()
