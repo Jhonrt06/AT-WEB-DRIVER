@@ -1,5 +1,14 @@
+# Inherit core project dependencies
 -r requirements.in
+
+# Code formatter
 black
+
+# Testing framework
 pytest
+
+# Import sorter and organizer
 isort
+
+# Logging utility
 loguru

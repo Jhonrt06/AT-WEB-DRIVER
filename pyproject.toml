@@ -6,8 +6,11 @@ authors = ["Jhon Rodriguez"]
 requires-python = ">=3.10"
 
 [tool.black]
+# Format code with a maximum line length of 80 characters
 line-length = 80
+# Target Python version
 target-version = ['py310']
 
 [tool.isort]
+# Use the Black-compatible import sorting profile
 profile = "black"
